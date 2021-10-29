@@ -1,8 +1,8 @@
 ### Project Topic: ###
 # Role-Playing Game #  
 ### Project Members: ###
-  - DaydreamerWilson : Wong Wing Sing (3035788534)
-  - Tang : Tang Kai Chi (3035806520)
+  - DaydreamerWilson (Wilson) : Wong Wing Sing (3035788534)
+  - CircleLight (Tang) : Tang Kai Chi (3035806520)
 ### Project Description: ###
   - To create a simple role-playing game with elements of dialogues, cutscenes, turn-based battle and random encounters.
   - The objective of the game is to level up through battling enemies, finding hints and solving puzzles in the map, and eventually complete the storyline.
