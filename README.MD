@@ -7,7 +7,7 @@
   - To create a simple role-playing game with elements of dialogues, cutscenes, turn-based battle and random encounters.
   - The objective of the game is to level up through battling enemies, finding hints and solving puzzles in the map, and eventually complete the storyline.
   - The player would start in a large-scale map, where he/she can move around in the large-scale map and approach towns/establishments, when he approaches a town/establishment, the player would enter a small-scale map, where he/she can then interact with the objects or characters to initiate the story.
-  - The player is also prompted to face random generated or presetted encounter, where the player would engage in turn-based combat with procedurally generated or presetted enemies.
+  - The player is also prompted to face random generated or preset encounters, where the player would engage in turn-based combat with procedurally generated or preset enemies.
 ### Planned Implementation: ###
   - Text-based user interface.
   - A large-scale (World/Continent) and several small-scale (Cities/Towns) map.
@@ -22,5 +22,5 @@
   - Random encountering of procedurally generated enemies in the large-scale map.
   - Using structs to store player, enemies, objects, non-player characters information.
   - Freeing up memories as player leaves or enter different regions, by unloading previous region.
-  - Saving and loading game status. Inputting of player, enemies, objects, non-player characters initial data and information from external files, allowing less data to be stored in the executable file.
-  - Employing the use of custom libraries, by classifying, catergorizing functions, we can disturbute codes to different files to allow a smoother cooperation of different individuals when working in the same project.
+  - Saving and loading game status. Inputting of player, enemies, objects, non-player characters initial data and information from external files, allowing fewer data to be stored in the executable file.
+  - Employing the use of custom libraries, by classifying, categorizing functions, we can distribute codes to different files to allow a smoother cooperation of different individuals when working in the same project.
