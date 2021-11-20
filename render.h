@@ -1,6 +1,10 @@
 #ifndef render
 #define render
 
+#include <string>
+
+using namespace std;
+
 class renderer
 {
 private:
