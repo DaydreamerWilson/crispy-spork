@@ -1,6 +1,8 @@
 #include "render.h"
 #include <iostream>
 
+using namespace std;
+
 /*
 class renderer
 {
