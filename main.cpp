@@ -29,17 +29,17 @@ int main(){
 
     if(cinput == 'S' || cinput == 'M' || cinput == 'L'){
       renderer0.resize(resolution[sel_resol][const_h], resolution[sel_resol][const_w]);
-      for(int i = 0; i < 5; i++){
-        for(int j = 0; j < 5; j++){
-          if((j==0 || j==4)||(i==0 || i==4)){
-            renderer0.drawPoint(resolution[sel_resol][const_w]/4*i-1, resolution[sel_resol][const_h]/4*j-1, '*');
+      for(int i = 0; i < resolution[sel_resol][const_w]; i++){
+        for(int j = 0; j < resolution[sel_resol][const_h]; j++){
+          if((j==0 || j==resolution[sel_resol][const_h]-1)||(i==0 || i==resolution[sel_resol][const_w]-1)){
+            renderer0.drawPoint(i, j, '*');
           }
         }
       }
       renderer0.present();
       renderer0.clear();
 
-      cout << "Please make sure you can see this line and all 16 * simultaneously." << endl;
+      cout << "Please make sure you can see this line and a rectangle of * simultaneously." << endl;
       cout << "Enter 'OKAY' to confirm, anything otherwise to change resolution:";
       cin >> sinput;
     }
