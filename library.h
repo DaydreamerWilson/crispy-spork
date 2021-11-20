@@ -16,4 +16,6 @@ const int resolution[3][2] = {
   {40, 120}
 };
 
+string int_to_string(int k);
+
 #endif
