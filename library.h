@@ -8,6 +8,10 @@
 #define medium 1
 #define large 2
 
+#include <string>
+
+using namespace std;
+
 extern int sel_resol;
 
 const int resolution[3][2] = {
