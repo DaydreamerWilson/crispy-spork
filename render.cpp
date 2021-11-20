@@ -1,5 +1,7 @@
-#include "render.h"
+#include <string>
 #include <iostream>
+#include "render.h"
+#incldue "library.h"
 
 using namespace std;
 
@@ -55,6 +57,22 @@ bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
   
 bool renderer::drawRectangle(int x, int y, int h, int w, char c){
   return false;
+}
+
+bool drawText(int x, int y, string s){
+  if(s.length()+x > resolution[sel_resol][const_w]){
+    return false;
+  }
+  else{
+    for(int i = 0; i < s.length(); i++){
+      drawPoint(x+i, y, s.[i]);
+    }
+  }
+  return true;
+}
+
+bool drawInt(int x, int y, int k){
+  return drawText(x, y, int_to_string(k));
 }
   
 bool renderer::present(){
