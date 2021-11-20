@@ -2,7 +2,7 @@
 #define library
 
 #define const_h 0
-#define cosnt_w 1
+#define const_w 1
 
 #define small 0
 #define medium 1
