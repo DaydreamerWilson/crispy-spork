@@ -32,7 +32,7 @@ int main(){
       for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
           if((j==0 || j==4)||(i==0 || i==4)){
-            renderer0.drawPoint(resolution[sel_resol][const_w]/4*i-1, resolution[sel_resol][const_h]/4*j-1;
+            renderer0.drawPoint(resolution[sel_resol][const_w]/4*i-1, resolution[sel_resol][const_h]/4*j-1);
           }
         }
       }
