@@ -5,6 +5,7 @@ class renderer
 {
 private:
   char ** pixel = NULL;
+  int h, w;
 public:
   void renderer(int h, int w);
   
