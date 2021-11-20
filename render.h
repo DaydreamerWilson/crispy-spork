@@ -7,7 +7,7 @@ private:
   char ** pixel = NULL;
 public:
   int height, width;
-  void renderer(int h, int w);
+  renderer(int h, int w);
   void resize(int h, int w);
   bool drawPoint(int x, int y, char c);
   bool drawLine(int x1, int y1, int x2, int y2, char c);
