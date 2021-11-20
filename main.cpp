@@ -36,8 +36,15 @@ int main(){
           }
         }
       }
-      renderer0.drawText(5, 5, "Make sure you can see this two lines");
+      
+      renderer0.drawText(5, 5, "Make sure you can see these 5 lines");
       renderer0.drawText(5, 6, "and a rectangle made of * with ease");
+      renderer0.drawText(5, 8, "Resolution:");
+      renderer0.drawText(5, 9, "Height:           Characters");
+      renderer0.drawInt(15, 9, resolution[sel_resol][const_h]);
+      renderer0.drawText(5, 10, "Width:           Characters");
+      renderer0.drawInt(15, 10, resolution[sel_resol][const_w]);
+      
       renderer0.present();
       renderer0.clear();
 
