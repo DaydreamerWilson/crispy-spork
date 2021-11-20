@@ -27,7 +27,7 @@ int main(){
         break;
     }
 
-    if(cinput == 'S' || sinput == 'M' || sinput == 'L'){
+    if(cinput == 'S' || cinput == 'M' || cinput == 'L'){
       renderer0.resize(resolution[sel_resol][const_h], resolution[sel_resol][const_w]);
       for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
@@ -41,7 +41,7 @@ int main(){
 
       cout << "Please make sure you can see this line and all 16 * simultaneously." << endl;
       cout << "Enter 'OKAY' to confirm, anything otherwise to change resolution:";
-      cin >> ssinput;
+      cin >> sinput;
     }
   }
 }
