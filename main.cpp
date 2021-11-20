@@ -7,27 +7,41 @@ using namespace std;
 
 renderer renderer0(100, 150);
 string sinput;
-int iinput[5];
 
 int main(){
   sinput = "!OKAY";
   while(sinput!="OKAY"){
-    cout << "Please enter desired resolution (height width):";
-    cin >> iinput[0] >> iinput[1];
-    if((iinput[0]>0 && iinput[0]<200) && (iinput[1]>0 && iinput[1]<200)){
-      renderer0.resize(iinput[0], iinput[1]);
-      renderer0.drawPoint(0, 0, '*');
-      renderer0.drawPoint(iinput[1]-1, 0, '*');
-      renderer0.drawPoint(0, iinput[0]-1, '*');
-      renderer0.drawPoint(iinput[1]-1, iinput[0]-1, '*');
+    cout << "Please enter desired resolution (S|M|L):";
+    char cinput;
+    cin >> cinput;
+    
+    switch(cinput){
+      case 'S': sel_resol = small;
+        break;  
+      case 'M': sel_resol = medium;
+        break;
+      case 'L': sel_resol = large;
+        break;
+      default:
+        cout << "Please enter capital letters";
+        break;
+    }
+
+    if(cinput == 'S' || sinput == 'M' || sinput == 'L'){
+      renderer0.resize(resolution[sel_resol][const_h], resolution[sel_resol][const_w]);
+      for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+          if((j==0 || j==4)||(i==0 || i==4)){
+            renderer0.drawPoint(resolution[sel_resol][const_w]/4*i-1, resolution[sel_resol][const_h]/4*j-1;
+          }
+        }
+      }
       renderer0.present();
       renderer0.clear();
-      cout << "Please make sure you can see this line and all 4 * simultaneously." << endl;
+
+      cout << "Please make sure you can see this line and all 16 * simultaneously." << endl;
       cout << "Enter 'OKAY' to confirm, anything otherwise to change resolution:";
       cin >> ssinput;
-    }
-    else{
-      cout << "Please only enter integer within range: [0, 200]";
     }
   }
 }
