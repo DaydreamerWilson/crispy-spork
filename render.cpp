@@ -63,3 +63,7 @@ renderer::clear(){
     }
   }
 }
+
+renderer::size{
+  return {height, width}
+}
