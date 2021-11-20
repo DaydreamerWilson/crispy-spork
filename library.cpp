@@ -14,7 +14,7 @@ string int_to_string(int k){
   }
   for(int j = i; j > 0; j--){
     temp += k / pow(10, j);
-    k %= pow(10, j);
+    k %= (int)pow(10, j);
   }
   return temp;
 }
