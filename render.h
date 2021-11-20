@@ -12,6 +12,8 @@ public:
   bool drawPoint(int x, int y, char c);
   bool drawLine(int x1, int y1, int x2, int y2, char c);
   bool drawRectangle(int x, int y, int h, int w, char c);
+  bool drawText(int x, int y, string s);
+  bool drawInt(int x, int y, int k);
   bool present();
   void clear();
 };
