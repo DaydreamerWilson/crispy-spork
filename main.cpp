@@ -10,7 +10,7 @@ string sinput;
 int iinput[5];
 
 int main(){
-  sinput = "\0";
+  sinput = "!OKAY";
   while(sinput!="OKAY"){
     cout << "Please enter desired resolution (height width):";
     cin >> iinput[0] >> iinput[1];
