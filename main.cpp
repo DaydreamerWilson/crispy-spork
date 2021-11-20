@@ -24,6 +24,10 @@ int main(){
       renderer0.clear();
       cout << "Please make sure you can see this line and all 4 * simultaneously." << endl;
       cout << "Enter 'OKAY' to confirm, anything otherwise to change resolution:";
+      cin >> ssinput;
+    }
+    else{
+      cout << "Please only enter integer within range: [0, 200]";
     }
   }
 }
