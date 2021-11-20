@@ -59,7 +59,7 @@ bool renderer::drawRectangle(int x, int y, int h, int w, char c){
   return false;
 }
 
-bool drawText(int x, int y, string s){
+bool renderer::drawText(int x, int y, string s){
   if(s.length()+x > resolution[sel_resol][const_w]){
     return false;
   }
@@ -71,7 +71,7 @@ bool drawText(int x, int y, string s){
   return true;
 }
 
-bool drawInt(int x, int y, int k){
+bool renderer::drawInt(int x, int y, int k){
   return drawText(x, y, int_to_string(k));
 }
   
