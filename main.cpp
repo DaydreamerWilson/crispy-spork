@@ -36,10 +36,11 @@ int main(){
           }
         }
       }
+      renderer0.drawText(5, 5, "Make sure you can see this two lines");
+      renderer0.drawText(5, 6, "and a rectangle made of * with ease");
       renderer0.present();
       renderer0.clear();
 
-      cout << "Please make sure you can see this line and a rectangle of * simultaneously." << endl;
       cout << "Enter 'OKAY' to confirm, anything otherwise to change resolution:";
       cin >> sinput;
     }
