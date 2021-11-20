@@ -35,6 +35,8 @@ void renderer::resize(int h, int w){
   for(int i = 0; i < height; i++){
     pixel[i] = new char[width];
   }
+  
+  clear();
 }
   
 bool renderer::drawPoint(int x, int y, char c){
