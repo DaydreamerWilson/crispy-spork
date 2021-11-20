@@ -1,4 +1,4 @@
-render.o: render.cpp render.h
+render.o: render.cpp render.h library.h
 	g++ -c render.cpp
 library.o: library.cpp library.h
 	g++ -c library.cpp
