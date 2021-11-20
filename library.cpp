@@ -2,6 +2,8 @@
 #include <string>
 #include "library.h"
 
+using namespace std;
+
 int sel_resol = small;
 
 string int_to_string(int k){
