@@ -38,15 +38,21 @@ renderer::resize(int h, int w){
 }
   
 renderer::drawPoint(int x, int y, char c){
-  pixel[y][x]=c;
+  if(x>=0 && x<width && y>=0 && y<height){
+    pixel[y][x]=c;
+    return true;
+  }
+  else{
+    return false;
+  }
 }
   
 renderer::drawLine(int x1, int y1, int x2, int y2, char c){
-  
+  return false;
 }
   
 renderer::drawRectangle(int x, int y, int h, int w, char c){
-  
+  return false;
 }
   
 renderer::present(){
@@ -56,16 +62,13 @@ renderer::present(){
     }
     cout << endl;
   }
+  return true;
 }
 
 renderer::clear(){
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
-      pixel[i][j]='\0';
+      pixel[i][j]=' ';
     }
   }
-}
-
-renderer::size{
-  return {height, width}
 }
