@@ -19,6 +19,8 @@ public:
   
   bool present();
   
+  void clear();
+  
   int[2] size();
 }
 
