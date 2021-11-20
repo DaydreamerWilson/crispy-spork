@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include "render.h"
-#incldue "library.h"
+#include "library.h"
 
 using namespace std;
 
@@ -65,7 +65,7 @@ bool drawText(int x, int y, string s){
   }
   else{
     for(int i = 0; i < s.length(); i++){
-      drawPoint(x+i, y, s.[i]);
+      drawPoint(x+i, y, s[i]);
     }
   }
   return true;
