@@ -4,7 +4,7 @@
 class renderer
 {
 private:
-  char ** pixel = NULL;
+  char ** pixel = 0;
 public:
   int height, width;
   renderer(int h, int w);
@@ -14,6 +14,6 @@ public:
   bool drawRectangle(int x, int y, int h, int w, char c);
   bool present();
   void clear();
-}
+};
 
 #endif
