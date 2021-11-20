@@ -20,6 +20,14 @@ const int resolution[3][2] = {
   {40, 120}
 };
 
+class map
+{
+public:
+  int height, width;
+  char ** grid;
+  map(string fin);
+};
+
 string int_to_string(int k);
 
 #endif
