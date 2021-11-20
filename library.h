@@ -8,7 +8,7 @@
 #define medium 1
 #define large 2
 
-int sel_resol = 0;
+extern int sel_resol;
 
 const int resolution[3][2] = {
   {20, 60},
