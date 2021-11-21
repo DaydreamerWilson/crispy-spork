@@ -11,10 +11,10 @@ int sel_resol = small;
 map::map(string fin){
   cout << "Loading map: " << fin << endl;
 
-  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading map (0x1)" << endl;}
+  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading map: file not found" << endl;}
   ifstream file;
   file.open(fin);
-  if(file.fail()){cout << "fatal error loading map (0x2)" << endl;}
+  if(file.fail()){cout << "fatal error loading map: file failed" << endl;}
 
   file >> height >> width;
 
