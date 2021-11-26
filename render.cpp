@@ -125,13 +125,27 @@ bool renderer::present(){
 }
 
 bool renderer::drawMap(int x1, int y1, int x2, int y2, int h, int w, map tar_map){
-  if(x1+w*2 > resolution[sel_resol][const_w] || y1+h*2 > resolution[sel_resol][const_h]){
+  if(x1+w*2 > resolution[sel_resol][const_w] || y1+h > resolution[sel_resol][const_h]){
     return false;
   }
   for(int i = 0; i < h; i++){
     for(int j = 0; j < w; j++){
       if(x2+j >=0 && y2+i >=0){
-        drawPoint(x1+j*2, y1+i*2, tar_map.grid[y2+i][x2+j]);
+        drawPoint(x1+j*2, y1+i, tar_map.grid[y2+i][x2+j]);
+      }
+    }
+  }
+  return true;
+}
+
+bool renderer::drawImage(int x1, int y1, int x2, int y2, int h, int w, map tar_map){
+  if(x1+w > resolution[sel_resol][const_w] || y1+h > resolution[sel_resol][const_h]){
+    return false;
+  }
+  for(int i = 0; i < h; i++){
+    for(int j = 0; j < w; j++){
+      if(x2+j >=0 && y2+i >=0){
+        drawPoint(x1+j, y1+i, tar_map.grid[y2+i][x2+j]);
       }
     }
   }
