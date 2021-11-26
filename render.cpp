@@ -41,7 +41,7 @@ bool renderer::drawPoint(int x, int y, char c){
     return false;
   }
 }
-//New
+//New_2
 bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
   if ((x1!=x2)&&(y1!=y2)){
     cout << "error drawing line: line not vertical or horizontal" << endl;
@@ -58,18 +58,19 @@ bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
       cout << "error drawing line: line out of bound" << endl;
       return false;
     }
+  }
   else if (x1>0 && x2<0){
     if ((x1>=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
       cout << "error drawing line: line out of bound" << endl;
       return false;
     }
-  else{
+  }
+  else if (x1<0 && x2<0){
     if ((x1<=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
       cout << "error drawing line: line out of bound" << endl;
       return false;
       }
     }
-  }
   else{
     if (y1==y2){
       for (int i; i<x2; i++){
@@ -82,8 +83,10 @@ bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
       }
     }
   }
+  return 0;
 }
-//New
+
+//New_2
 bool renderer::drawRectangle(int x, int y, int h, int w, char c){
   double x_left=x, x_right=x_left+w;
   double y_lower=y, y_higher=y_lower+h;
@@ -96,6 +99,7 @@ bool renderer::drawRectangle(int x, int y, int h, int w, char c){
   else{
     drawLine(x_left, y_lower, x_right, y_higher, c);
   }
+  return 0;
 }
 
 bool renderer::drawText(int x, int y, string s){
