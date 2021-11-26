@@ -48,23 +48,23 @@ bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
     return false;
   }
   else if (x1>=0 && x2>=0){
-    if (x1>=resolution[sel_resol][const_h]||x2>=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
+    if ((x1>=resolution[sel_resol][const_h]||x2>=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
       cout << "error drawing line: line out of bound" << endl;
       return false;
       }
     }
   else if (x1<0 && x2>0){
-    if (x1<=resolution[sel_resol][const_h]||x2>=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
+    if ((x1<=resolution[sel_resol][const_h]||x2>=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
       cout << "error drawing line: line out of bound" << endl;
       return false;
     }
   else if (x1>0 && x2<0){
-    if (x1>=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
+    if ((x1>=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
       cout << "error drawing line: line out of bound" << endl;
       return false;
     }
   else{
-    if (x1<=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
+    if ((x1<=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
       cout << "error drawing line: line out of bound" << endl;
       return false;
       }
