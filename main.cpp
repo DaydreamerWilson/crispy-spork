@@ -54,6 +54,9 @@ void set_resolution(){
 }
 
 int main(){
+  load_characters("./res/characters");
+  characters[0].print();
+
   init_rand();
   renderer0.clear();
 

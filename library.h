@@ -12,8 +12,6 @@
 
 using namespace std;
 
-extern int sel_resol;
-
 const int resolution[3][2] = {
   {20, 60},
   {32, 96},
@@ -29,6 +27,21 @@ public:
 };
 // storing ascii art or map files
 
+class character
+{
+public:
+  int id, hp, atk, def, spd, rgn;
+  char tier;
+  string icon, name, info;
+  character();
+  character(string fin);
+  void print();
+};
+// storing statistical of characters
+
+void load_characters(string fin);
+// loading characters data from specific folder
+
 string int_to_string(int k);
 // converting integer to string
 
@@ -43,5 +56,8 @@ int randInt(int min, int max);
 double randDouble(double min, double max);
 // generate random double with minimum value (inclusive) and maximum (exclusive) or 3 decimal places
 // randDouble(0, 3) will generate from 0.000 to 2.999
+
+extern int sel_resol;
+extern character *characters;
 
 #endif

@@ -9,11 +9,12 @@
 using namespace std;
 
 int sel_resol = small;
+character *characters = 0;
 
 map::map(string fin){
   cout << "Loading map: " << fin << endl;
 
-  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading map: file not found" << endl;}
+  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading map: syntax error" << endl;}
   ifstream file;
   file.open(fin);
   if(file.fail()){cout << "fatal error loading map: file failed" << endl;}
@@ -38,6 +39,58 @@ map::map(string fin){
   }
 
   cout << endl << "Successfully loaded map: " << fin << endl;
+}
+
+character::character(){}
+
+character::character(string fin){
+  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading character: syntax error" << endl;}
+  ifstream file;
+  file.open(fin);
+  if(file.fail()){cout << "fatal error loading character: file failed" <<endl;}
+
+  string temp;
+  file >> temp >> id;
+  file >> temp >> name;
+  file >> temp >> icon;
+  file >> temp;
+  getline(file, info);
+  info = info.substr(1);
+  file >> temp >> tier;
+  file >> temp >> hp;
+  file >> temp >> atk;
+  file >> temp >> def;
+  file >> temp >> spd;
+  file >> temp >> rgn;
+}
+
+void character::print(){
+  cout << "noid: " << id << endl;
+  cout << "name: " << name << endl;
+  cout << "icon: " << icon << endl;
+  cout << "description: " << info << endl;
+  cout << "class: " << tier << endl;
+  cout << "hpt: " << hp << endl;
+  cout << "atk: " << atk << endl;
+  cout << "def: " << def << endl;
+  cout << "spd: " << spd << endl;
+  cout << "rgn: " <<rgn << endl;
+}
+
+void load_characters(string fin){
+  int no_of_character, id;
+  string fin_1;
+  ifstream list_file, character_file;
+  list_file.open(fin+"/character_list.txt");
+  if(list_file.fail()){cout << "fatal error loading character list: file failed" << endl;}
+  list_file >> no_of_character;
+  characters = new character[no_of_character];
+  for(int i = 0; i < no_of_character; i++){
+    list_file >> id;
+    list_file >> fin_1;
+    characters[i] = (fin+"/"+fin_1+".txt");
+    if(id != characters[i].id){cout << "error loading character: character file id not matching character list id (" << id << ')' << endl;}
+  }
 }
 
 string int_to_string(int k){
