@@ -10,9 +10,7 @@ map test_map("./res/test_map.txt");
 map test_img("./res/test_img.txt");
 string sinput;
 
-int main(){
-  init_rand();
-  renderer0.clear();
+void set_resolution(){
   sinput = "!OKAY";
   while(sinput!="OKAY"){
     cout << "Please enter desired resolution ( S | M | L ): ";
@@ -34,15 +32,6 @@ int main(){
 
     if(cinput == 'S' || cinput == 'M' || cinput == 'L'){
       renderer0.resize(resolution[sel_resol][const_h], resolution[sel_resol][const_w]);
-      /*
-      for(int i = 0; i < resolution[sel_resol][const_w]; i++){
-        for(int j = 0; j < resolution[sel_resol][const_h]; j++){
-          if((j==0 || j==resolution[sel_resol][const_h]-1)||(i==0 || i==resolution[sel_resol][const_w]-1)){
-            renderer0.drawPoint(i, j, '*');
-          }
-        }
-      }
-      */
       renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
 
       renderer0.drawText(5, 5, "Make sure you can see these 6 lines");
@@ -62,6 +51,13 @@ int main(){
       cin >> sinput;
     }
   }
+}
+
+int main(){
+  init_rand();
+  renderer0.clear();
+
+  set_resolution();
 
   while(sinput == "OKAY"){
     renderer0.clear();
@@ -71,7 +67,8 @@ int main(){
     renderer0.drawText(5, 8, "(C)ampaign");
     renderer0.drawText(5, 9, "(S)kirmish");
     renderer0.drawText(5, 10, "(I)nventory");
-    renderer0.drawText(5, 11, "(E)xit");
+    renderer0.drawText(5, 11, "(R)esolution");
+    renderer0.drawText(5, 12, "(E)xit");
     renderer0.present();
 
     char cinput;
@@ -85,6 +82,9 @@ int main(){
     case 'S':
       break;
     case 'I':
+      break;
+    case 'R':
+      set_resolution();
       break;
     case 'E':
       sinput = "";

@@ -94,11 +94,11 @@ bool renderer::drawRectangle(int x, int y, int h, int w, char c){
 }
 
 bool renderer::drawText(int x, int y, string s){
-  if(s.length()+x > resolution[sel_resol][const_w]){
+  if((int)s.length()+x > resolution[sel_resol][const_w]){
     return false;
   }
   else{
-    for(int i = 0; i < s.length(); i++){
+    for(int i = 0; i < (int)s.length(); i++){
       drawPoint(x+i, y, s[i]);
     }
   }
@@ -153,7 +153,5 @@ void renderer::clear(){
       pixel[i][j]=' ';
     }
   }
-  for(int i = 0; i < 100; i++){
-    cout << endl;
-  }
+  cout << '\n' << '\n' << '\n' << '\n' << '\n' << '\n' << '\n' << '\n' << '\n' << '\n';
 }
