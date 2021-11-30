@@ -6,10 +6,12 @@
 using namespace std;
 
 renderer renderer0(100, 150);
-map world_map("./res/test.txt");
+map test_map("./res/test_map.txt");
+map test_img("./res/test_img.txt");
 string sinput;
 
 int main(){
+  init_rand();
   renderer0.clear();
   sinput = "!OKAY";
   while(sinput!="OKAY"){
@@ -32,6 +34,7 @@ int main(){
 
     if(cinput == 'S' || cinput == 'M' || cinput == 'L'){
       renderer0.resize(resolution[sel_resol][const_h], resolution[sel_resol][const_w]);
+      /*
       for(int i = 0; i < resolution[sel_resol][const_w]; i++){
         for(int j = 0; j < resolution[sel_resol][const_h]; j++){
           if((j==0 || j==resolution[sel_resol][const_h]-1)||(i==0 || i==resolution[sel_resol][const_w]-1)){
@@ -39,21 +42,53 @@ int main(){
           }
         }
       }
+      */
+      renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
 
       renderer0.drawText(5, 5, "Make sure you can see these 6 lines");
       renderer0.drawText(5, 6, "a rectangle made of *");
-      renderer0.drawText(5, 7, "and a 5 by 5 alphabetic table");
+      renderer0.drawText(5, 7, "and two 5 by 5 alphabetic table");
       renderer0.drawText(5, 8, "Resolution:");
       renderer0.drawText(5, 9, "Height:           Characters");
       renderer0.drawInt(15, 9, resolution[sel_resol][const_h]);
       renderer0.drawText(5, 10, "Width:           Characters");
       renderer0.drawInt(15, 10, resolution[sel_resol][const_w]);
-      renderer0.drawMap(42, 5, 0, 0, 5, 5, world_map);
+      renderer0.drawMap(42, 5, 0, 0, test_map.height, test_map.width, test_map);
+      renderer0.drawImage(42, 11, 0, 0, test_img.height, test_img.width, test_img);
       renderer0.present();
 
       cout << "Make sure you can see the calibration text box" << endl;
       cout << "Enter (OKAY) to confirm, anything otherwise to change resolution: ";
       cin >> sinput;
+    }
+  }
+
+  while(sinput == "OKAY"){
+    renderer0.clear();
+    renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
+    renderer0.drawText(5, 5, "Main menu");
+    renderer0.drawText(5, 7, "(T)utorial");
+    renderer0.drawText(5, 8, "(C)ampaign");
+    renderer0.drawText(5, 9, "(S)kirmish");
+    renderer0.drawText(5, 10, "(I)nventory");
+    renderer0.drawText(5, 11, "(E)xit");
+    renderer0.present();
+
+    char cinput;
+    cout << "Please enter the capital letter for you choice: " <<endl;
+    cin >> cinput;
+    switch(cinput){
+    case 'T':
+      break;
+    case 'C':
+      break;
+    case 'S':
+      break;
+    case 'I':
+      break;
+    case 'E':
+      sinput = "";
+      break;
     }
   }
 }

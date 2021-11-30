@@ -39,48 +39,40 @@ bool renderer::drawPoint(int x, int y, char c){
   }
   else{
     return false;
+    cout << "error drawing point: point out of bound" << endl;
   }
 }
 //New_2
 bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
-  if ((x1!=x2)&&(y1!=y2)){
+  if(((x1!=x2)&&(y1!=y2))||((x1==x2) && (y1==y2))){
     cout << "error drawing line: line not vertical or horizontal" << endl;
     return false;
   }
-  else if (x1>=0 && x2>=0){
-    if ((x1>=resolution[sel_resol][const_h]||x2>=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
-      cout << "error drawing line: line out of bound" << endl;
-      return false;
-      }
+  if((x1<0)||(x1>resolution[sel_resol][const_w]-1)||
+     (x2<0)||(x2>resolution[sel_resol][const_w]-1)||
+     (y1<0)||(y1>resolution[sel_resol][const_h]-1)||
+     (y2<0)||(y2>resolution[sel_resol][const_h]-1)){
+    cout << "error drawing line: line out of bound" << endl;
+  }
+  int temp=0;
+  if(x1==x2){
+    if(y1>y2){
+      temp=y2;
+      y2=y1;
+      y1=temp;
     }
-  else if (x1<0 && x2>0){
-    if ((x1<=resolution[sel_resol][const_h]||x2>=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
-      cout << "error drawing line: line out of bound" << endl;
-      return false;
+    for(int i = y1; i < y2+1; i++){
+      drawPoint(x1, i, c);
     }
   }
-  else if (x1>0 && x2<0){
-    if ((x1>=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
-      cout << "error drawing line: line out of bound" << endl;
-      return false;
+  if(y1==y2){
+    if(x1>x2){
+      temp=x2;
+      x2=x1;
+      x1=temp;
     }
-  }
-  else if (x1<0 && x2<0){
-    if ((x1<=resolution[sel_resol][const_h]||x2<=resolution[sel_resol][const_h]) || (y1>=resolution[sel_resol][const_w]||y2>=resolution[sel_resol][const_w])){
-      cout << "error drawing line: line out of bound" << endl;
-      return false;
-      }
-    }
-  else{
-    if (y1==y2){
-      for (int i; i<x2; i++){
-        drawPoint(i, y1, c);
-      }
-    }
-    else if (x1==x2){
-      for (int j; j<y2; j++){
-        drawPoint(x1, j, c);
-      }
+    for(int i = x1; i < x2+1; i++){
+      drawPoint(i, y1, c);
     }
   }
   return 0;
@@ -88,16 +80,15 @@ bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
 
 //New_2
 bool renderer::drawRectangle(int x, int y, int h, int w, char c){
-  double x_left=x, x_right=x_left+w;
-  double y_lower=y, y_higher=y_lower+h;
-  double height = resolution[sel_resol][const_h];
-  double width = resolution[sel_resol][const_w];
-  if ((h>height)||(w>width)){
-    cout << "error drawing rectangle: rectangle out of bound";
+  if((y+h>resolution[sel_resol][const_h])||(x+w>resolution[sel_resol][const_w])||(x<0)||(y<0)){
+    cout << "error drawing rectangle: rectangle out of bound" << endl;
     return false;
   }
   else{
-    drawLine(x_left, y_lower, x_right, y_higher, c);
+    drawLine(x, y, x+w-1, y, c);
+    drawLine(x, y, x, y+h-1, c);
+    drawLine(x+w-1, y+h-1, x, y+h-1, c);
+    drawLine(x+w-1, y+h-1, x+w-1, y, c);
   }
   return 0;
 }
