@@ -1,7 +1,7 @@
 id 73
 name Hiruzen Sarutobi
 icon HR
-description the Third Hokage (三代目火影, Sandaime Hokage), has been the longest-ruling Hokage, being forced to return to duty after the Fourth Hokage, Minato Namikaze's death
+description the Third Hokage (Sandaime Hokage), has been the longest-ruling Hokage, being forced to return to duty after the Fourth Hokage, Minato Namikaze's death
 class C
 hp 175
 atk 85
