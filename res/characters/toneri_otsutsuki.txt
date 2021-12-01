@@ -1,7 +1,7 @@
 id 60
-name Toneri Ōtsutsuki
+name Toneri Otsutsuki
 icon TO
-description the antagonist of The Last: Naruto the Movie, a descendant of Hamura Ōtsutsuki whose family left the world and live on the moon to maintain the imprisonment of the Gedo Statue
+description the antagonist of The Last: Naruto the Movie, a descendant of Hamura Otsutsuki whose family left the world and live on the moon to maintain the imprisonment of the Gedo Statue
 class C
 hp 150
 atk 80
