@@ -1,7 +1,7 @@
 id 80
 name Killer Bee
 icon KL
-description a ninja from the village of Kumogakure and the Jinchuriki of Gyuki — the Eight-Tails
+description a ninja from the village of Kumogakure and the Jinchuriki of Gyuki - the Eight-Tails
 class C
 hp 175
 atk 85
