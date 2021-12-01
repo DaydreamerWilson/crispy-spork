@@ -1,7 +1,7 @@
 id 57
 name Sasori
 icon SS
-description "Sasori of the Red Sand" (赤砂の蠍, Akasuna no Sasori), is a former ninja of Sunagakure and partner of Deidara 
+description "Sasori of the Red Sand" (Akasuna no Sasori), is a former ninja of Sunagakure and partner of Deidara 
 class B
 hp 330
 atk 140
