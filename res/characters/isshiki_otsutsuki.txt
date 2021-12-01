@@ -1,5 +1,5 @@
 id 64
-name Isshiki Ōtsutsuki
+name Isshiki Otsutsuki
 icon IO
 description one of the main antagonists of Boruto: Naruto Next Generations and a member of the main family of the Ōtsutsuki clan
 class C
