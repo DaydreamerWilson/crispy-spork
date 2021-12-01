@@ -1,7 +1,7 @@
 id 59
-name Kaguya Ōtsutsuki
+name Kaguya Otsutsuki
 icon KO
-description member of the main family of the Ōtsutsuki clan who is the central underlying antagonist of the Naruto series
+description member of the main family of the Otsutsuki clan who is the central underlying antagonist of the Naruto series
 class B
 hp 330
 atk 140
