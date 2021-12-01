@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include <time.h>
 #include "library.h"
 
@@ -91,15 +92,41 @@ void load_characters(string fin){
     list_file >> id;
     list_file >> fin_1;
     characters[i] = (fin+"/"+fin_1+".txt");
-    if(id != characters[i].id){cout << "error loading character: character file id not matching character list id (" << id << ')' << endl;}
+    if(id != characters[i].id && i!=id){cout << "error loading character: character file id not matching character list id (" << id << ')' << endl;}
     characters[i].print();
+  }
+}
+
+void player::load(string fin){
+  ifstream file;
+  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading player data: syntax error" << endl;}
+  file.open(fin);
+  if(file.fail()){cout << "fatal error loading character: file failed" <<endl;}
+
+  int counter, temp;
+  file >> ruby >> counter;
+  for(int i = 0; i < counter; i++){
+    file >> temp;
+    character_list.push_back(characters[temp-1]);
+  }
+}
+
+void player::save(string fin){
+  ofstream file;
+  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error saving player data: syntax error" << endl;}
+  file.open(fin);
+  if(file.fail()){cout << "fatal error saving character: file failed" <<endl;}
+
+  file << ruby << ' ' << character_list.size() << endl;
+  for(int i = 0; i < character_list.size(); i++){
+    file << character_list[i].id << ' ';
   }
 }
 
 string int_to_string(int k){
   int i = 0;
   string temp = "";
-  while(pow(10, i)<k){
+  while(pow(10, i)<=k){
     i++;
   }
   for(int j = i-1; j >= 0; j--){

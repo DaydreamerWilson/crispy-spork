@@ -9,6 +9,7 @@
 #define large 2
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -36,8 +37,18 @@ public:
   character();
   character(string fin);
   void print();
+  void render_info();
 };
 // storing statistical of characters
+
+class player{
+public:
+  int ruby;
+  vector<character> character_list;
+  void load(string fin);
+  void save(string fin);
+}
+;
 
 void load_characters(string fin);
 // loading characters data from specific folder
