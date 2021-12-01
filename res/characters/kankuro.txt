@@ -1,0 +1,10 @@
+id 24
+name Kankuro
+icon KA
+description the middle of the three Sand Siblings
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

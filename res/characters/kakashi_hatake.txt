@@ -1,0 +1,10 @@
+id 5
+name Kakashi Hatake
+icon KH
+description smart leader of team 7
+class A
+hp 300
+atk 120
+def 130
+spd 4
+rgn 5

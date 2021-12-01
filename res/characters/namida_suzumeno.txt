@@ -1,0 +1,10 @@
+id 31
+name Namida Suzumeno
+icon NS
+description a Konohagakure ninja genin who is prone to crying
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

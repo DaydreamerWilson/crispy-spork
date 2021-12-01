@@ -1,0 +1,10 @@
+id 54
+name Deidara
+icon DE
+description a former ninja of Iwagakure, having left the village after bombing it
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

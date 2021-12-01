@@ -1,0 +1,10 @@
+id 45
+name Sakon and Ukon
+icon SO
+description  twin brothers who are the strongest of the Sound Four and count as one member due to their ability to merge their bodies with anyone and kill an opponent at a cellular level
+class B
+hp 250
+atk 130
+def 130
+spd 4
+rgn 4

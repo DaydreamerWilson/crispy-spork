@@ -1,0 +1,10 @@
+id 12
+name Akamaru
+icon AK
+description Kiba Inuzuka's ninja dog, best friend, and constant companion
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

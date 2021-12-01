@@ -1,0 +1,10 @@
+id 77
+name Anko Mitarashi
+icon AN
+description a kunoichi from Konohagakure and a classmate of Team Minato's
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

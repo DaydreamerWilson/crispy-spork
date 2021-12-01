@@ -1,0 +1,10 @@
+id 39
+name Zabuza Momochi
+icon ZM
+description a former member of Kirigakure's Seven Swordsmen of the Mist, a group of ninja that use particularly large swords in battle
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

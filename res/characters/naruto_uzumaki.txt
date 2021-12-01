@@ -1,0 +1,10 @@
+id 2
+name Naruto Uzumaki
+icon NU
+description first character created by Kishimoto
+class S
+hp 500
+atk 150
+def 200
+spd 5
+rgn 7

@@ -1,0 +1,10 @@
+id 67
+name Koji Kashin
+icon KJ
+description A masked figure who assigned his sleeper agent Ao to retrieve Kawaki. He possesses the Fire-Style jutsu True Fire of Samadhi, which creates flames hot enough to negate an opponent's regeneration, and can use both Toad summoning jutsu and the Rasengan
+class C
+hp 150
+atk 80
+def 90
+spd 4
+rgn 5

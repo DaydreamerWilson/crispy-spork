@@ -1,0 +1,10 @@
+id 58
+name Madara Uchiha
+icon MU
+description one of the co-founders of the Hidden Leaf Village along with Hashirama Senju, the two later revealed to be reincarnations of their clans' founding ancestors Indra and Asura prior to Sasuke and Naruto
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

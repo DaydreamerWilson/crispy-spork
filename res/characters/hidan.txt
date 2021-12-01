@@ -1,0 +1,10 @@
+id 55
+name Hidan
+icon HI
+description the immortal, foul-mouthed, and sadomasochistic partner of Kakuzu and a former ninja of Yugakure, the Village Hidden in Boiling Water
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

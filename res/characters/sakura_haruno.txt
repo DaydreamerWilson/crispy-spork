@@ -1,0 +1,10 @@
+id 4
+name Sakura Haruno
+icon SH
+description member of Team 7
+class S
+hp 300
+atk 100
+def 300
+spd 5
+rgn 7

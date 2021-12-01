@@ -1,0 +1,10 @@
+id 36
+name Iwabi Yuino
+icon IW
+description Konohagakure Academy student
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

@@ -1,0 +1,10 @@
+id 18
+name Asuma Sarutobi
+icon AS
+description leader of Team 10 and son of the Third Hokage Hiruzen Sarutobi
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

@@ -1,0 +1,10 @@
+id 14
+name Kurenai Yuhi
+icon KY
+description leader of Team 8, a skilled user of genjutsu
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

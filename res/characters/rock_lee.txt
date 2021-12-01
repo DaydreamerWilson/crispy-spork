@@ -1,0 +1,10 @@
+id 19
+name Rock Lee
+icon RL
+description a member of Team Guy and the favorite student of team leader Might Guy
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

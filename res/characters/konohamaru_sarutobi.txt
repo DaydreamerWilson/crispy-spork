@@ -1,0 +1,10 @@
+id 9
+name Konohamaru Sarutobi
+icon KS
+description 
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

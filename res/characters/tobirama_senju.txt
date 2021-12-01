@@ -1,0 +1,10 @@
+id 72
+name Tobirama Senju
+icon TS
+description the Second Hokage (二代目火影, Nidaime Hokage), is the younger brother of Hashirama and the teacher of Hiruzen Sarutobi
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

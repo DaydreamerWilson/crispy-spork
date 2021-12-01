@@ -1,0 +1,10 @@
+id 47
+name Kimimaro
+icon KM
+description the last of the Kaguya Clan who has his kin's Kekkei Genkai ability to manipulate his bone structure, called the Shikotsumyaku
+class B
+hp 250
+atk 130
+def 130
+spd 4
+rgn 4

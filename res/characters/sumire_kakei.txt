@@ -1,0 +1,10 @@
+id 30
+name Sumire Kakei
+icon SM
+description class representative during Boruto's time in the Hidden Leaf's Academy
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

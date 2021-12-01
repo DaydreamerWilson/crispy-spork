@@ -1,0 +1,10 @@
+id 71
+name Hashirama Senju
+icon HS
+description the First Hokage (初代火影, Shodai Hokage) was the co-founder of the first ninja village, Konohagakure, and the former leader of Senju Clan
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

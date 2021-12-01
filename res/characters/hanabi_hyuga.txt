@@ -1,0 +1,10 @@
+id 34
+name Hanabi Hyuga
+icon HA
+description  youngest daughter of Hiashi Hyūga and the younger sister of Hinata Hyuga
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

@@ -1,0 +1,10 @@
+id 78
+name Sai
+icon AI
+description a ninja who joins Team Kakashi in Part II
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

@@ -1,0 +1,10 @@
+id 22
+name Might Guy
+icon MG
+description leader of Team Guy who dedicates most of his time to his pupil Rock Lee
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

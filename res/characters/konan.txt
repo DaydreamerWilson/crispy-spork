@@ -1,0 +1,10 @@
+id 51
+name Konan
+icon KO
+description the only female ninja in the Akatsuki
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

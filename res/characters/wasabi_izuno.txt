@@ -1,0 +1,10 @@
+id 32
+name Wasabi Izuno
+icon WI
+description a ninja genin from Konohagakure
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

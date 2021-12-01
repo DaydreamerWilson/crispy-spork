@@ -1,0 +1,10 @@
+id 29
+name Moegi Kazamatsuri
+icon MK
+description member of Team Ebisu, consisting of her, Konohamaru Sarutobi, and Udon, with whom she forms the "Konohamaru Ninja Squad"
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

@@ -1,0 +1,10 @@
+id 23
+name Gaara
+icon GA
+description the youngest of the three Sand Siblings, created as a foil to Naruto Uzumaki, with a similar background yet a highly divergent personality
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

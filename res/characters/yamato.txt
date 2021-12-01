@@ -1,0 +1,10 @@
+id 79
+name Yamato
+icon YA
+description a substitute leader in Team Kakashi
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

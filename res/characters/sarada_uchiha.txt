@@ -1,0 +1,10 @@
+id 7
+name Sarada Uchiha
+icon SA
+description daughter of Sasuke Uchiha and Sakura Haruno
+class A
+hp 300
+atk 120
+def 130
+spd 4
+rgn 5

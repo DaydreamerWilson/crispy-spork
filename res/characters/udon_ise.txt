@@ -1,0 +1,10 @@
+id 38
+name Udon Ise
+icon UI
+description member of Team Ebisu, consisting of himself, Konohamaru Sarutobi, and Moegi, with whom they form the "Konohamaru Ninja Squad"
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

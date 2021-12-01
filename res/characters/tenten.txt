@@ -1,0 +1,10 @@
+id 21
+name Tenten
+icon TE
+description a member of Team Guy who longs to prove that a female ninja can be just as skilled as a male ninja
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

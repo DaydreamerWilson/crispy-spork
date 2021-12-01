@@ -1,0 +1,10 @@
+id 20
+name Neji Hyuga
+icon NH
+description a member of Team Guy and a child prodigy of the Hyuga clan
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

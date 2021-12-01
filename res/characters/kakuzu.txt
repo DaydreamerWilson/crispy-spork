@@ -1,0 +1,10 @@
+id 56
+name Kakuzu
+icon KK
+description the partner of Hidan and a former ninja of Takigakure, the Village Hidden in the Waterfalls
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

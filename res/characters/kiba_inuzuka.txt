@@ -1,0 +1,10 @@
+id 11
+name Kiba Inuzuka
+icon KI
+description member of Team 8 from the Inuzuka Clan
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

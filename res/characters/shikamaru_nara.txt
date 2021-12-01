@@ -1,0 +1,10 @@
+id 15
+name Shikamaru Nara
+icon SN
+description member of Team 10
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

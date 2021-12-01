@@ -1,0 +1,10 @@
+id 75
+name Tsunade
+icon TS
+description a former student of Hiruzen Sarutobi
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

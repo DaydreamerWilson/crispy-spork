@@ -1,0 +1,10 @@
+id 17
+name Ino Yamanaka
+icon IY
+description a childhood friend of Sakura Haruno
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

@@ -1,0 +1,10 @@
+id 13
+name Shino Aburame
+icon SI
+description member of Team 8 from the Aburame Clan
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

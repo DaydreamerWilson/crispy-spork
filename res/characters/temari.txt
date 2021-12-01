@@ -1,0 +1,10 @@
+id 25
+name Temari
+icon TM
+description the oldest of the three Sand Siblings
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

@@ -1,0 +1,10 @@
+id 53
+name Itachi Uchiha
+icon IU
+description a former ninja of Konohagakure and the partner of Kisame Hoshigaki
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

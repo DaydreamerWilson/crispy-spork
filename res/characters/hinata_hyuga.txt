@@ -1,0 +1,10 @@
+id 10
+name Hinata Hyuga
+icon HH
+description Team 8 who suffers from a lack of self-confidence
+class B
+hp 300
+atk 100
+def 125
+spd 4
+rgn 3

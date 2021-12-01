@@ -1,0 +1,10 @@
+id 76
+name Jiraiya
+icon JR
+description a Konohagakure ninja, being not only Naruto's teacher but also his father's teacher
+class C
+hp 175
+atk 85
+def 115
+spd 1
+rgn 2

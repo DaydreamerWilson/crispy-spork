@@ -1,0 +1,10 @@
+id 33
+name Tsubaki Kurogane
+icon TK
+description a samurai who was a disciple of Mifune
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5

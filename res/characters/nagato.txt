@@ -1,0 +1,10 @@
+id 52
+name Nagato
+icon NA
+description primarily known under the alias of Pain (ペイン, Pein), is the recognized leader of the Akatsuki and partner of Konan, with Obito acting as his benefactor
+class B
+hp 330
+atk 140
+def 75
+spd 2
+rgn 5

@@ -1,0 +1,10 @@
+id 26
+name Shikadai Nara
+icon SK
+description son of Shikamaru Nara and Temari, and Boruto's best friend, who attends Konoha's ninja academy
+class B
+hp 280
+atk 130
+def 95
+spd 3
+rgn 5

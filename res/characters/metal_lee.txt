@@ -1,0 +1,10 @@
+id 35
+name Metal Lee
+icon ML
+description son of Rock Lee who attends Konoha's ninja academy
+class B
+hp 310
+atk 90
+def 90
+spd 2
+rgn 5
