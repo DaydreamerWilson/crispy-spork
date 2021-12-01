@@ -1,7 +1,7 @@
 id 74
 name Minato Namikaze
 icon MN
-description the Fourth Hokage (四代目火影, Yondaime Hokage), is Naruto Uzumaki's father and Kushina's husband
+description the Fourth Hokage (Yondaime Hokage), is Naruto Uzumaki's father and Kushina's husband
 class C
 hp 175
 atk 85
