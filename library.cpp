@@ -51,7 +51,9 @@ character::character(string fin){
 
   string temp;
   file >> temp >> id;
-  file >> temp >> name;
+  file >> temp;
+  getline(file, name);
+  name = name.substr(1);
   file >> temp >> icon;
   file >> temp;
   getline(file, info);
@@ -90,6 +92,7 @@ void load_characters(string fin){
     list_file >> fin_1;
     characters[i] = (fin+"/"+fin_1+".txt");
     if(id != characters[i].id){cout << "error loading character: character file id not matching character list id (" << id << ')' << endl;}
+    characters[i].print();
   }
 }
 
