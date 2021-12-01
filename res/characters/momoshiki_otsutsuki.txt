@@ -1,7 +1,7 @@
 id 61
-name Momoshiki Ōtsutsuki
+name Momoshiki Otsutsuki
 icon MO
-description one of the two antagonists of Boruto: Naruto the Movie and a member of the main family of the Ōtsutsuki clan
+description one of the two antagonists of Boruto: Naruto the Movie and a member of the main family of the Otsutsuki clan
 class C
 hp 150
 atk 80
