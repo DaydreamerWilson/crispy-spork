@@ -1,7 +1,7 @@
 id 63
-name Urashiki Ōtsutsuki
+name Urashiki Otsutsuki
 icon UO
-description one of the antagonists in Boruto: Naruto Next Generations anime and a member of the main family of the Ōtsutsuki clan
+description one of the antagonists in Boruto: Naruto Next Generations anime and a member of the main family of the Otsutsuki clan
 class C
 hp 150
 atk 80
