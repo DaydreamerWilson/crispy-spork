@@ -113,7 +113,6 @@ int main(){
       {
         int page = 1;
         int max_page = (playerdata.character_list.size()/(resolution[sel_resol][const_h]-9))+1;
-        cout << max_page;
         while(cinput!='M'){
           renderer0.clear();
           renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
@@ -138,12 +137,13 @@ int main(){
 
           bool num = true;
           for(int i=0; i<sinput.size(); i++){
-            if(sinput[i]<'0' && sinput[i]>'9'){
+            if(sinput[i]<'0' || sinput[i]>'9'){
               num = false;
               break;
             }
           }
-          if(num = true){
+          if(num == true){
+            cout << "Num is true!!!";
             int temp;
             istringstream iss (sinput);
             iss >> temp;
@@ -152,8 +152,8 @@ int main(){
                 renderer0.clear();
                 renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
                 print_character(characters[temp-1]);
-                renderer0.drawText(2, resolution[sel_resol][const_h]-3, "Enter anything to return to the character list");
                 renderer0.present();
+                cout << "Please enter anything to continue: ";
                 cin >> sinput;
               }
             }
