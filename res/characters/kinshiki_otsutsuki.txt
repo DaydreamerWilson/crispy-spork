@@ -1,7 +1,7 @@
 id 62
-name Kinshiki Ōtsutsuki
+name Kinshiki Otsutsuki
 icon KN
-description one of the two antagonists of Boruto: Naruto the Movie. He is Momoshiki's obedient subordinate and a member of the main family of the Ōtsutsuki clan
+description one of the two antagonists of Boruto: Naruto the Movie. He is Momoshiki's obedient subordinate and a member of the main family of the Otsutsuki clan
 class C
 hp 150
 atk 80
