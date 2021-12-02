@@ -28,6 +28,14 @@ public:
 };
 // storing ascii art or map files
 
+class field
+{
+public:
+  int height, width;
+  int ** grid;
+  field(map min);
+};
+
 class character
 {
 public:
@@ -47,14 +55,23 @@ public:
   vector<character> character_list;
   void load(string fin);
   void save(string fin);
-}
-;
+};
+
+class piece{
+public:
+  int x, y, id;
+  piece();
+  piece(int x, int y, int id);
+};
 
 void load_characters(string fin);
 // loading characters data from specific folder
 
 string int_to_string(int k);
 // converting integer to string
+
+string int_to_map(int k);
+// converting integer input to corresponding map objects
 
 void init_rand();
 // reset seed for random number generation

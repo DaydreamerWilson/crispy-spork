@@ -133,6 +133,22 @@ bool renderer::drawMap(int x1, int y1, int x2, int y2, int h, int w, map tar_map
   return true;
 }
 
+bool renderer::drawField(int x, int y, field tar_fin){
+  x++;
+  y++;
+  for(int i = 0; i < tar_fin.height; i++){
+    drawText((i+1)*3+x, y, int_to_string(i));
+  }
+  for(int j = 0; j < tar_fin.width; j++){
+    drawText(x, j+y+1, int_to_string(j));
+  }
+  for(int i = 0; i < tar_fin.height; i++){
+      for(int j = 0; j < tar_fin.width; j++){
+          drawText(3*(j+1)+x, i+y+1, int_to_map(tar_fin.grid[i][j]));
+      }
+  }
+}
+
 bool renderer::drawImage(int x1, int y1, int x2, int y2, int h, int w, map tar_map){
   if(x1+w > resolution[sel_resol][const_w] || y1+h > resolution[sel_resol][const_h]){
     return false;

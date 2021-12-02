@@ -42,6 +42,29 @@ map::map(string fin){
   cout << endl << "Successfully loaded map: " << fin << endl;
 }
 
+field::field(map min){
+  if(min.height==0||min.width%2!=0||min.width==0){
+    cout << "fatal error building map: input format error" << endl;
+  }
+
+  height = min.height;
+  width = min.width/2;
+
+  grid = new int * [height];
+  for(int i = 0; i < height; i++){
+    grid[i] = new int [width];
+  }
+
+  for(int i = 0; i < height; i++){
+    for(int j = 0; j < width; j++){
+        grid[i][j] = min.grid[i][2*j+1]-'0';
+        if(grid[i][j]==3){
+          grid[i][j]=-1;
+        }
+    }
+  }
+}
+
 character::character(){}
 
 character::character(string fin){
@@ -99,9 +122,9 @@ void load_characters(string fin){
 
 void player::load(string fin){
   ifstream file;
-  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading player data: syntax error" << endl;}
+  if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading playerdata: syntax error" << endl;}
   file.open(fin);
-  if(file.fail()){cout << "fatal error loading character: file failed" <<endl;}
+  if(file.fail()){cout << "fatal error loading playerdata: file failed" <<endl;}
 
   int counter, temp;
   file >> ruby >> counter;
@@ -123,17 +146,44 @@ void player::save(string fin){
   }
 }
 
+piece::piece(){}
+
+piece::piece(int x, int y, int id){
+  this->x = x;
+  this->y = y;
+  this->id = id;
+}
+
 string int_to_string(int k){
-  int i = 0;
-  string temp = "";
-  while(pow(10, i)<=k){
-    i++;
+  if(k){
+    int i = 0;
+    string temp = "";
+    while(pow(10, i)<=k){
+      i++;
+    }
+    for(int j = i-1; j >= 0; j--){
+      temp += '0' + k / pow(10, j);
+      k %= (int)pow(10, j);
+    }
+    return temp;
   }
-  for(int j = i-1; j >= 0; j--){
-    temp += '0' + k / pow(10, j);
-    k %= (int)pow(10, j);
+  else{
+    return "0";
   }
-  return temp;
+}
+
+string int_to_map(int k){
+  switch(k){
+  case 0:
+    return "   ";
+    break;
+  case -1:
+    return "XX ";
+    break;
+  default:
+    return characters[k-1].icon+" ";
+    break;
+  }
 }
 
 void init_rand(){

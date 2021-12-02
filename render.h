@@ -20,6 +20,7 @@ public:
   bool drawText(int x, int y, string s);
   bool drawInt(int x, int y, int k);
   bool drawMap(int x1, int y1, int x2, int y2, int h, int w, map tar_map);
+  bool drawField(int x, int y, field tar_fin);
   bool drawImage(int x1, int y1, int x2, int y2, int h, int w, map tar_map);
   bool present();
   void clear();
