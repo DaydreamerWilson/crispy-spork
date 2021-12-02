@@ -65,6 +65,28 @@ field::field(map min){
   }
 }
 
+void field::clear_mark(){
+  for(int i = 0; i < height; i++){
+    for(int j = 0; j < width; j++){
+      if(grid[i][j]>0){grid[i][j]=0;}
+    }
+  }
+}
+
+void field::add_mark(int x, int y, int range, int i){
+  if(grid[y][x]>i || grid[y][x]==0){
+    grid[y][x]=i;
+    if(range>0){
+      range--;
+      i++;
+      if(x>0){add_mark(x-1, y, range, i);}
+      if(y>0){add_mark(x, y-1, range, i);}
+      if(x<width-1){add_mark(x+1, y, range, i);}
+      if(y<width-1){add_mark(x, y+1, range, i);}
+    }
+  }
+}
+
 character::character(){}
 
 character::character(string fin){
@@ -155,6 +177,7 @@ piece::piece(int x, int y, int id){
 }
 
 string int_to_string(int k){
+  if(k < 0){return "KIA";}
   if(k){
     int i = 0;
     string temp = "";
@@ -181,7 +204,7 @@ string int_to_map(int k){
     return "XX ";
     break;
   default:
-    return characters[k-1].icon+" ";
+    return ".  ";
     break;
   }
 }

@@ -147,6 +147,7 @@ bool renderer::drawField(int x, int y, field tar_fin){
           drawText(3*(j+1)+x, i+y+1, int_to_map(tar_fin.grid[i][j]));
       }
   }
+  return true;
 }
 
 bool renderer::drawImage(int x1, int y1, int x2, int y2, int h, int w, map tar_map){

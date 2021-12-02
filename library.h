@@ -34,6 +34,8 @@ public:
   int height, width;
   int ** grid;
   field(map min);
+  void clear_mark();
+  void add_mark(int x, int y, int range, int i);
 };
 
 class character
