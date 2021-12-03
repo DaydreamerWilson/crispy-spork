@@ -95,6 +95,7 @@ bool renderer::drawRectangle(int x, int y, int h, int w, char c){
 
 bool renderer::drawText(int x, int y, string s){
   if((int)s.length()+x > resolution[sel_resol][const_w]){
+    cout << "error drawing text: text out of bound" << endl;
     return false;
   }
   else{
@@ -112,7 +113,12 @@ bool renderer::drawInt(int x, int y, int k){
 bool renderer::present(){
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
-      cout << pixel[i][j];
+      if(pixel[i][j]>31 && pixel[i][j]<127){
+        cout << pixel[i][j];
+      }
+      else{
+        cout << ' ';
+      }
     }
     cout << endl;
   }
