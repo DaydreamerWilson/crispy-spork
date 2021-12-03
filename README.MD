@@ -10,7 +10,7 @@
   - New characters can be used in battle.
   - Characters will be lost if killed in action during combat.
   - Easy and accessible modding of the game.
-### Gamerule ###
+### Gamerule: ###
   - Follow instructions.
   - Avoid invalid input to prevent unexpected behaviour.
   - You're free to modify any .txt files while complying to the format (in Instructions).
@@ -35,7 +35,7 @@
     - Allow inspecting of stats.
     - Saving of your precious characters.
       - Autosave is frequent and loading is automatic at the start of the game.
-### Game Instructions ###
+### Game Instructions: ###
   - Use make main in terminal to compile the game.
   - Use ./main to run the game.
   - Upon starting the game, enter S to select the smallest resolution.
@@ -83,7 +83,7 @@
       - Enter . to return to main menu afterward.
       - The game will be auto-saved at this point
   - After the battle, enter I to enter the inventory to view the new character.
-### File Instructions ###
+### File Instructions: ###
   - You can find instructions to modify the game files here.
   - Characters:
     - Navigate to crispy-sporky-main/res/characters.
