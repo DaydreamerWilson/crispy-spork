@@ -42,7 +42,7 @@
       - Enter corresponding ID to view character information.
       - Enter . to leave character information screen.
       - Enter M to return to main menu.
-    -Combat
+    - Combat
       - Enter ./res/map/8_8_symmetric.txt or D to enter combat with the default map.
       - Enter 1 2 5 to select character with ID 1, 2 and 5.
       - List on the left is the user's character information.
