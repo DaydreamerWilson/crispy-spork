@@ -63,6 +63,7 @@
       - Enter M to enter movement mode.
       - Enter 2 3 to move NU to X, Y position 2, 3.
         - A message will be shown near the bottom of the screen to show the mover and the target coordinate.
+      - Enter . to continue onto the next character.
       - Finish the round by choosing to attack or move of the last character.
         - If you choose to attack, the enemy might be out of range, and no valid target is available.
         - If no valid target is available, enter 0 0, the attack will be automatically cancelled.
@@ -72,4 +73,10 @@
         - You can only see the aftermath of the enemy action.
         - A message will appear near the bottom of the screen, indicating what action enemy took, the target, and damage done (if enemy chose to attack).
         - Enemy actioner is denoted by <  >, actionee (such as attackee during an enemy attack) is denoted by [  ], no actionee will appear if the enemy chose to move.
-      - Enter . three times.
+      - Enter . three times to skip all enemy action.
+      - Finish the battle by eliminating all enemies by moving into range and attack them to deduct their health points.
+      - After winning the battle, the game will notify you of a new character.
+      - Enter . to view the new character's information.
+      - Enter . to return to main menu afterward.
+      - The game will be auto-saved at this point
+  - After the battle, enter I to enter the inventory to view the new character.
