@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// constructor of renderer
 renderer::renderer(int h, int w){
   height = h;
   width = w;
@@ -15,6 +16,7 @@ renderer::renderer(int h, int w){
   }
 }
 
+// changing size of 2-D array for storing printing screen by dynamic memory allocations
 void renderer::resize(int h, int w){
   for(int i = 0; i < height; i++){
     delete[] pixel[i];
@@ -32,6 +34,7 @@ void renderer::resize(int h, int w){
   clear();
 }
 
+// drawing single character directly on the renderer's printing screen
 bool renderer::drawPoint(int x, int y, char c){
   if(x>=0 && x<width && y>=0 && y<height){
     pixel[y][x]=c;
@@ -42,7 +45,8 @@ bool renderer::drawPoint(int x, int y, char c){
     cout << "error drawing point: point out of bound" << endl;
   }
 }
-//New_2
+
+// drawing lines with draw point function
 bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
   if(((x1!=x2)&&(y1!=y2))||((x1==x2) && (y1==y2))){
     cout << "error drawing line: line not vertical or horizontal" << endl;
@@ -78,7 +82,7 @@ bool renderer::drawLine(int x1, int y1, int x2, int y2, char c){
   return 0;
 }
 
-//New_2
+// drawing rectangle with draw line function
 bool renderer::drawRectangle(int x, int y, int h, int w, char c){
   if((y+h>resolution[sel_resol][const_h])||(x+w>resolution[sel_resol][const_w])||(x<0)||(y<0)){
     cout << "error drawing rectangle: rectangle out of bound" << endl;
@@ -93,6 +97,7 @@ bool renderer::drawRectangle(int x, int y, int h, int w, char c){
   return 0;
 }
 
+// drawing text with draw point function
 bool renderer::drawText(int x, int y, string s){
   if((int)s.length()+x > resolution[sel_resol][const_w]){
     cout << "error drawing text: text out of bound" << endl;
@@ -106,10 +111,12 @@ bool renderer::drawText(int x, int y, string s){
   return true;
 }
 
+// convert int to string, then draw out string with draw text function
 bool renderer::drawInt(int x, int y, int k){
   return drawText(x, y, int_to_string(k));
 }
 
+// print the renderer stored screen
 bool renderer::present(){
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
@@ -125,6 +132,7 @@ bool renderer::present(){
   return true;
 }
 
+// draw map stored in map class
 bool renderer::drawMap(int x1, int y1, int x2, int y2, int h, int w, map tar_map){
   if(x1+w*2 > resolution[sel_resol][const_w] || y1+h > resolution[sel_resol][const_h]){
     return false;
@@ -139,6 +147,7 @@ bool renderer::drawMap(int x1, int y1, int x2, int y2, int h, int w, map tar_map
   return true;
 }
 
+// draw field stored in field class
 bool renderer::drawField(int x, int y, field tar_fin){
   x++;
   y++;
@@ -156,6 +165,7 @@ bool renderer::drawField(int x, int y, field tar_fin){
   return true;
 }
 
+// draw image from map class
 bool renderer::drawImage(int x1, int y1, int x2, int y2, int h, int w, map tar_map){
   if(x1+w > resolution[sel_resol][const_w] || y1+h > resolution[sel_resol][const_h]){
     return false;
@@ -170,6 +180,7 @@ bool renderer::drawImage(int x1, int y1, int x2, int y2, int h, int w, map tar_m
   return true;
 }
 
+// clear renderer screen and auto endl to move away previous screen printed
 void renderer::clear(){
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){

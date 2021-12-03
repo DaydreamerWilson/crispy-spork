@@ -12,6 +12,7 @@ map test_img("./res/test_img.txt");
 string sinput;
 player playerdata;
 
+// set resolution and calibrate by user
 void set_resolution(){
   sinput = "!OKAY";
   while(sinput!="OKAY"){
@@ -56,6 +57,7 @@ void set_resolution(){
   }
 }
 
+// draw screen for character information
 void print_character(character c){
   renderer0.drawText(2, 2, "ID  : "); renderer0.drawInt(8, 2, c.id);
   renderer0.drawText(2, 3, "Name: "); renderer0.drawText(8, 3, c.name);
@@ -82,6 +84,7 @@ void print_character(character c){
   renderer0.drawText(2, y+7, "Range  : "); renderer0.drawInt(12, y+7, c.rgn);
 }
 
+// choose characters before battle
 void choose_character(int f, int e, character * player_c, character * enemy_c){
   int page = 1, chose = 0;
   int max_page = (playerdata.character_list.size()/(resolution[sel_resol][const_h]-9))+1;
@@ -117,7 +120,6 @@ void choose_character(int f, int e, character * player_c, character * enemy_c){
       }
     }
     if(num == true){
-      //cout << "Num is true!!!";
       int temp;
       istringstream iss (sinput);
       iss >> temp;
@@ -145,6 +147,7 @@ void choose_character(int f, int e, character * player_c, character * enemy_c){
   }
 }
 
+// draw battle screen
 void draw_battle(field field_now, piece * blufor, piece * redfor, character * player_c, character * enemy_c, int f, int e){
   renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
   renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], 7, '*');
@@ -168,6 +171,7 @@ void draw_battle(field field_now, piece * blufor, piece * redfor, character * pl
   }
 }
 
+// check if chess piece on board is eliminated
 int pop_dead(piece * nfor, character * x, int size){
   int counter=0;
   character ctemp;
@@ -193,10 +197,12 @@ int pop_dead(piece * nfor, character * x, int size){
   }
 }
 
+// main battle running process
 void battle(map min){
   string sinput;
   char cinput;
 
+  // initiate null pointer to store chess piece for both side
   character * player_c = 0;
   character * enemy_c = 0;
   piece * blufor;
@@ -223,11 +229,13 @@ void battle(map min){
     cout << "error starting battle: map does not pass spawn check" << endl;
   }
 
+  // add character to both side
   choose_character(f, e, player_c, enemy_c);
 
   int tempf=f;
   int tempe=e;
 
+  // placing characters on board
   for(int i = 0; i < field_now.height; i++){
     for(int j = 0; j < field_now.width; j++){
       if(field_now.grid[i][j]==1){
@@ -243,11 +251,13 @@ void battle(map min){
 
   field_now.clear_mark();
 
+  // run battle process
   while(e>0 && f>0){
 
+    // run for each player controlled character
     for(int i = 0; i < f; i++){
+      // check which move player what to use
       while(cinput!='M' && cinput!='A'){
-        //field_now.add_mark(blufor[i].x, blufor[i].y, player_c[i].spd, 0);
         renderer0.clear();
 
         draw_battle(field_now, blufor, redfor, player_c, enemy_c, f, e);
@@ -257,7 +267,7 @@ void battle(map min){
         renderer0.drawText(8, resolution[sel_resol][const_h]-2, "Enter capital letter to (M)ove or (A)ttack");
 
         renderer0.present();
-        //field_now.clear_mark();
+        cout << "Please enter your command: ";
 
         cin >> sinput;
         cinput = sinput[0];
@@ -267,6 +277,9 @@ void battle(map min){
       bool flag=true;
       while(flag){
         int x, y;
+
+        // show player available location for moving or attacking
+        // input player decided location
 
         field_now.add_mark(blufor[i].x, blufor[i].y, cinput=='M'?player_c[i].spd:player_c[i].rgn, 0);
         renderer0.clear();
@@ -289,6 +302,8 @@ void battle(map min){
 
         renderer0.present();
 
+        cout << "Please enter a coordinate: ";
+
         getline(cin, sinput);
         istringstream iss (sinput);
         bool num = true;
@@ -300,7 +315,6 @@ void battle(map min){
         }
 
         iss >> x >> y;
-        //cout << x << y;
 
         int counter = 0;
         if(cinput=='A'){
@@ -312,10 +326,10 @@ void battle(map min){
         }
         else{counter++;}
 
+        // check if player movement or attack is valid
         bool valid = cinput=='M'?true:false;
         int temp, dmg;
         if(x>=0 && x<field_now.width && y>=0 && y<field_now.height){
-          //cout << "Checking";
           if(cinput=='M'){
             for(int j=0; j<f; j++){
               if(x==blufor[j].x && y==blufor[j].y){valid = false; break;}
@@ -357,6 +371,7 @@ void battle(map min){
 
             renderer0.clear();
 
+            // print final product and show what move player did
             draw_battle(field_now, blufor, redfor, player_c, enemy_c, f, e);
             renderer0.drawText(10, resolution[sel_resol][const_h]-2, player_c[i].icon);
             if(cinput == 'M'){
@@ -378,16 +393,17 @@ void battle(map min){
             cinput = ' ';
           }
         }
-
-        //cout << counter;
         if(counter==0){flag=false; i--; cinput=' ';}
 
         field_now.clear_mark();
       }
 
+      // check if game ended and if any enemy died turning this turn
       e = pop_dead(redfor, enemy_c, e);
+      if(e == 0){break;}
     }
 
+    // run for each computer controlled characters
     for(int i = 0; i < e; i++){
       renderer0.clear();
 
@@ -397,6 +413,9 @@ void battle(map min){
       field_now.clear_mark();
       field_now.add_mark(redfor[i].x, redfor[i].y, enemy_c[i].rgn, 0);
 
+      // decide move for computer controlled character
+
+      // attack target in range
       bool hasTarget = false;
       for(int j = 0; j < f; j++){
         if(field_now.grid[blufor[j].y][blufor[j].x]>0){
@@ -421,8 +440,7 @@ void battle(map min){
         }
       }
 
-      //cout << "Finished attack check: " << hasTarget;
-
+      // move to a different position if no target in range
       if(!hasTarget){
         field_now.clear_mark();
         field_now.add_mark(redfor[i].x, redfor[i].y, enemy_c[i].spd, 0);
@@ -432,7 +450,6 @@ void battle(map min){
           dy = randInt(0, enemy_c[i].spd-dx+1);
           dx += 2*(randInt(0, 2)*-1)*dx;
           dy += 2*(randInt(0, 2)*-1)*dy;
-          //cout << dx << ' ' << dy;
           if(redfor[i].y+dy >= 0 && redfor[i].y+dy < field_now.height &&
              redfor[i].x+dx >= 0 && redfor[i].x+dx < field_now.width &&
              !(dx == 0 && dy == 0)
@@ -465,6 +482,8 @@ void battle(map min){
       renderer0.drawPoint(3*(redfor[i].x+1)+7, redfor[i].y+2, '>');
       renderer0.drawPoint(3*(redfor[i].x+1)+10, redfor[i].y+2, '<');
 
+      // show what move computer controlled character did
+      renderer0.drawText(10, resolution[sel_resol][const_h]-2, enemy_c[i].icon);
       if(cinput == 'M'){
         renderer0.drawText(13, resolution[sel_resol][const_h]-2, "moved to ");
         renderer0.drawInt(22, resolution[sel_resol][const_h]-2, x);
@@ -485,12 +504,15 @@ void battle(map min){
       cin >> sinput;
       cinput = ' ';
 
+      // check if game ended and if any user controlled character died during this turn
       f = pop_dead(blufor, player_c, f);
+      if(f == 0){break;}
     }
   }
 
   renderer0.clear();
   if(e==0){
+    // draw victory screen and add new character for player and auto save
     renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
     renderer0.drawText(2, 2, "Victory");
     renderer0.drawText(2, 3, "You gained a new character!");
@@ -498,6 +520,7 @@ void battle(map min){
     playerdata.save("./res/playerdata.txt");
   }
   else{
+    // draw defeated screen and auto save
     renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
     renderer0.drawText(2, 2, "Defeated");
     playerdata.save("./res/playerdata.txt");
@@ -506,6 +529,7 @@ void battle(map min){
   cout << "Enter anything to continue: ";
   cin >> sinput;
 
+  // remove temporary pointer storing chess pieces data
   delete[] player_c;
   delete[] enemy_c;
   delete[] blufor;
@@ -513,9 +537,13 @@ void battle(map min){
 }
 
 int main(){
+  // loading all characters
   load_characters("./res/characters");
 
+  // initiate random seeds and auto checking
   init_rand();
+
+  // loading playerdata
   playerdata.load("./res/playerdata.txt");
 
   renderer0.clear();
@@ -523,10 +551,10 @@ int main(){
   set_resolution();
 
   while(sinput!="QUIT"){
+    // print out main menu and available options
     renderer0.clear();
     renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
     renderer0.drawText(2, 2, "Main menu");
-    //renderer0.drawText(2, 4, "(T)utorial");
     renderer0.drawText(2, 5, "(C)ombat");
     renderer0.drawText(2, 6, "(S)ave");
     renderer0.drawText(2, 7, "(I)nventory");
@@ -539,13 +567,13 @@ int main(){
     cin >> sinput;
     cinput = sinput[0];
     switch(cinput){
-    case 'T':
-      break;
     case 'C':
+      // initiate battle with map class
       battle(map("./res/map/8_8_symmetric.txt"));
       sinput = " ";
       break;
     case 'S':
+      // saving the player data and print out success message
       playerdata.save("./res/playerdata.txt");
       renderer0.clear();
       renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
@@ -555,6 +583,7 @@ int main(){
       cin >> sinput;
       break;
     case 'I':
+      // print out character list owned by player
       {
         int page = 1;
         int max_page = (playerdata.character_list.size()/(resolution[sel_resol][const_h]-9))+1;
@@ -588,7 +617,6 @@ int main(){
             }
           }
           if(num == true){
-            //cout << "Num is true!!!";
             int temp;
             istringstream iss (sinput);
             iss >> temp;
@@ -596,7 +624,7 @@ int main(){
               if(playerdata.character_list[i].id==temp){
                 renderer0.clear();
                 renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
-                print_character(characters[temp-1]);
+                print_character(characters[temp-1]); // print out character data selected by user
                 renderer0.present();
                 cout << "Please enter anything to continue: ";
                 cin >> sinput;
@@ -618,16 +646,17 @@ int main(){
       }
       break;
     case 'R':
-      set_resolution();
+      set_resolution(); // call the set_resolution function
       break;
     case 'E':
+      // auto save player data, then print out terminating screen
       playerdata.save("./res/playerdata.txt");
       renderer0.clear();
       renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
       renderer0.drawText(5, 5, "Player data successfully saved");
       renderer0.drawText(5, 6, "Terminating game...");
       renderer0.present();
-      sinput = "QUIT";
+      sinput = "QUIT"; // exit the game
       break;
     }
   }

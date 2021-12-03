@@ -12,6 +12,7 @@ using namespace std;
 int sel_resol = small;
 character *characters = 0;
 
+// loading txt into map file
 map::map(string fin){
   cout << "Loading map: " << fin << endl;
 
@@ -34,14 +35,13 @@ map::map(string fin){
     cout << temp << ' ';
     for(int j = 0; j < width; j++){
       grid[i][j]=temp[j];
-      //cout << grid[i][j];
     }
-    //cout << endl;
   }
 
   cout << endl << "Successfully loaded map: " << fin << endl;
 }
 
+// constructor for field data
 field::field(map min){
   if(min.height==0||min.width%2!=0||min.width==0){
     cout << "fatal error building map: input format error" << endl;
@@ -65,6 +65,7 @@ field::field(map min){
   }
 }
 
+// clear flood fill check marker
 void field::clear_mark(){
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
@@ -73,6 +74,7 @@ void field::clear_mark(){
   }
 }
 
+// using flood fill algorithm to check tile valdiation
 void field::add_mark(int x, int y, int range, int i){
   if(grid[y][x]>i || grid[y][x]==0){
     grid[y][x]=i;
@@ -87,8 +89,10 @@ void field::add_mark(int x, int y, int range, int i){
   }
 }
 
+// dummy constructor for declaration of null pointer
 character::character(){}
 
+// constructor for character data
 character::character(string fin){
   if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading character: syntax error" << endl;}
   ifstream file;
@@ -112,6 +116,7 @@ character::character(string fin){
   file >> temp >> rgn;
 }
 
+// printing all character data
 void character::print(){
   cout << "noid: " << id << endl;
   cout << "name: " << name << endl;
@@ -125,6 +130,7 @@ void character::print(){
   cout << "rgn: " <<rgn << endl;
 }
 
+// loading characters list
 void load_characters(string fin){
   int no_of_character, id;
   string fin_1;
@@ -138,12 +144,12 @@ void load_characters(string fin){
     list_file >> fin_1;
     characters[i] = (fin+"/"+fin_1+".txt");
     if(id != characters[i].id && i!=id){cout << "error loading character: character file id not matching character list id (" << id << ')' << endl;}
-    //characters[i].print();
     cout << "loading character: " << characters[i].id << endl;
   }
   cout << "finished loading characters!" << endl;
 }
 
+// loading playerdata
 void player::load(string fin){
   ifstream file;
   if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading playerdata: syntax error" << endl;}
@@ -158,6 +164,7 @@ void player::load(string fin){
   }
 }
 
+// saving playerdata
 void player::save(string fin){
   ofstream file;
   if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error saving player data: syntax error" << endl;}
@@ -170,14 +177,17 @@ void player::save(string fin){
   }
 }
 
+// dummy constructor for declaration of null pointer
 piece::piece(){}
 
+// constructor for piece data
 piece::piece(int x, int y, int id){
   this->x = x;
   this->y = y;
   this->id = id;
 }
 
+// converting integer to string
 string int_to_string(int k){
   if(k < 0){return "KIA";}
   if(k){
@@ -197,6 +207,7 @@ string int_to_string(int k){
   }
 }
 
+// converting integer to specific string
 string int_to_map(int k){
   switch(k){
   case 0:
@@ -211,6 +222,7 @@ string int_to_map(int k){
   }
 }
 
+// initiate random seed and check random function
 void init_rand(){
   srand(time(0));
   int sumi, tempi;
@@ -237,10 +249,12 @@ void init_rand(){
   cout << "mean(5)/variance(m=5)(10.000) of 1000 integer generation:" << (double)sumi/1000 << '/' << vi/999 << endl;
 }
 
+// return a rand integer number etween min and max
 int randInt(int min, int max){
   return rand() % (max-min) + min;
 }
 
+// return a rand double number between min and max
 double randDouble(double min, double max){
   double temp = 0;
   double range = max-min;

@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// declared renderer class for storing printing screen and associated functions
 class renderer
 {
 private:

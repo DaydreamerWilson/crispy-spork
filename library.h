@@ -13,12 +13,14 @@
 
 using namespace std;
 
+// const resolution preset value
 const int resolution[3][2] = {
   {20, 60},
   {32, 96},
   {40, 120}
 };
 
+// storing ascii art or map files
 class map
 {
 public:
@@ -26,8 +28,8 @@ public:
   char ** grid;
   map(string fin);
 };
-// storing ascii art or map files
 
+// storing the game board
 class field
 {
 public:
@@ -38,6 +40,7 @@ public:
   void add_mark(int x, int y, int range, int i);
 };
 
+// storing statistical of characters
 class character
 {
 public:
@@ -49,8 +52,8 @@ public:
   void print();
   void render_info();
 };
-// storing statistical of characters
 
+// storing the playerdata, including owned characters
 class player{
 public:
   int ruby;
@@ -59,6 +62,7 @@ public:
   void save(string fin);
 };
 
+// storing the position and id of chess piece on the board
 class piece{
 public:
   int x, y, id;
@@ -66,28 +70,30 @@ public:
   piece(int x, int y, int id);
 };
 
-void load_characters(string fin);
 // loading characters data from specific folder
+void load_characters(string fin);
 
-string int_to_string(int k);
 // converting integer to string
+string int_to_string(int k);
 
-string int_to_map(int k);
 // converting integer input to corresponding map objects
+string int_to_map(int k);
 
-void init_rand();
 // reset seed for random number generation
 // test generation randomness
+void init_rand();
 
-int randInt(int min, int max);
 // generate random integers with minimum value (inclusive) and maximum (exclusive)
 // randInt(0,3) will generate three integers 0, 1, 2
+int randInt(int min, int max);
 
-double randDouble(double min, double max);
 // generate random double with minimum value (inclusive) and maximum (exclusive) or 3 decimal places
 // randDouble(0, 3) will generate from 0.000 to 2.999
+double randDouble(double min, double max);
 
+// store selected resolution
 extern int sel_resol;
+
 extern character *characters;
 
 #endif
