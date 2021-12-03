@@ -138,8 +138,10 @@ void load_characters(string fin){
     list_file >> fin_1;
     characters[i] = (fin+"/"+fin_1+".txt");
     if(id != characters[i].id && i!=id){cout << "error loading character: character file id not matching character list id (" << id << ')' << endl;}
-    characters[i].print();
+    //characters[i].print();
+    cout << "loading character: " << characters[i].id << endl;
   }
+  cout << "finished loading characters!" << endl;
 }
 
 void player::load(string fin){

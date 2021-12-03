@@ -272,7 +272,7 @@ void battle(map min){
         renderer0.clear();
 
         draw_battle(field_now, blufor, redfor, player_c, enemy_c, f, e);
-        renderer0.drawPoint(2, i*4+1, '>');
+        renderer0.drawPoint(2, i*5+1, '>');
         renderer0.drawPoint(3*(blufor[i].x+1)+7, blufor[i].y+2, '>');
         renderer0.drawPoint(3*(blufor[i].x+1)+10, blufor[i].y+2, '<');
         renderer0.drawText(8, resolution[sel_resol][const_h]-2, "Enter coordinate (X Y) to ");
@@ -332,7 +332,17 @@ void battle(map min){
           else{
             for(int j=0; j<e; j++){
               if(field_now.grid[redfor[j].y][redfor[j].x]>0 && x==redfor[j].x && y==redfor[j].y){
-                dmg = player_c[i].atk - enemy_c[j].def / 2;
+
+                if(player_c[i].atk > enemy_c[j].def*2){
+                  dmg = player_c[i].atk;
+                }
+                else if(player_c[i].atk*2 < enemy_c[j].def){
+                  dmg = 1;
+                }
+                else{
+                  dmg = player_c[i].atk - enemy_c[j].def/2;
+                }
+
                 dmg *= randDouble(0.8, 1.2);
                 enemy_c[j].hp -= dmg;
                 temp = j;
@@ -381,12 +391,99 @@ void battle(map min){
     for(int i = 0; i < e; i++){
       renderer0.clear();
 
+      int temp, dmg;
+      int x, y;
+      int dx, dy;
+      field_now.clear_mark();
+      field_now.add_mark(redfor[i].x, redfor[i].y, enemy_c[i].rgn, 0);
+
+      bool hasTarget = false;
+      for(int j = 0; j < f; j++){
+        if(field_now.grid[blufor[j].y][blufor[j].x]>0){
+          x = blufor[j].x;
+          y = blufor[j].y;
+          cinput = 'A';
+          hasTarget = true;
+
+          if(enemy_c[i].atk > player_c[j].def*2){
+            dmg = enemy_c[i].atk;
+          }
+          else if(enemy_c[i].atk*2 < player_c[j].def){
+            dmg = 1;
+          }
+          else{
+            dmg = enemy_c[i].atk - player_c[j].def/2;
+          }
+
+          dmg *= randDouble(0.8, 1.2);
+          player_c[j].hp -= dmg;
+          temp = j;
+        }
+      }
+
+      //cout << "Finished attack check: " << hasTarget;
+
+      if(!hasTarget){
+        field_now.clear_mark();
+        field_now.add_mark(redfor[i].x, redfor[i].y, enemy_c[i].spd, 0);
+
+        while(!hasTarget){
+          dx = randInt(0, enemy_c[i].spd+1);
+          dy = randInt(0, enemy_c[i].spd-dx+1);
+          dx += 2*(randInt(0, 2)*-1)*dx;
+          dy += 2*(randInt(0, 2)*-1)*dy;
+          //cout << dx << ' ' << dy;
+          if(redfor[i].y+dy >= 0 && redfor[i].y+dy < field_now.height &&
+             redfor[i].x+dx >= 0 && redfor[i].x+dx < field_now.width &&
+             !(dx == 0 && dy == 0)
+             ){
+            if(field_now.grid[redfor[i].y+dy][redfor[i].x+dx]>0){
+              bool not_occupied = true;
+              for(int j = 0; j < e; j++){
+                if(redfor[j].x == redfor[i].x+dx && redfor[j].y == redfor[i].y+dy){
+                  not_occupied = false;
+                }
+              }
+              if(not_occupied){
+                redfor[i].x += dx;
+                redfor[i].y += dy;
+                x = redfor[i].x;
+                y = redfor[i].y;
+                hasTarget = true;
+              }
+            }
+          }
+        }
+
+        cinput = 'M';
+      }
+
+      field_now.clear_mark();
+
       draw_battle(field_now, blufor, redfor, player_c, enemy_c, f, e);
-      renderer0.drawPoint(2, i*4+1, '>');
+      renderer0.drawPoint(resolution[sel_resol][const_w]-5, i*5+1, '>');
       renderer0.drawPoint(3*(redfor[i].x+1)+7, redfor[i].y+2, '>');
       renderer0.drawPoint(3*(redfor[i].x+1)+10, redfor[i].y+2, '<');
 
+      if(cinput == 'M'){
+        renderer0.drawText(13, resolution[sel_resol][const_h]-2, "moved to ");
+        renderer0.drawInt(22, resolution[sel_resol][const_h]-2, x);
+        renderer0.drawInt(25, resolution[sel_resol][const_h]-2, y);
+      }
+      else{
+        renderer0.drawText(13, resolution[sel_resol][const_h]-2, "attacked ");
+        renderer0.drawText(22, resolution[sel_resol][const_h]-2, player_c[temp].icon);
+        renderer0.drawPoint(3*(blufor[temp].x+1)+7, blufor[temp].y+2, '[');
+        renderer0.drawPoint(3*(blufor[temp].x+1)+10, blufor[temp].y+2, ']');
+        renderer0.drawText(25, resolution[sel_resol][const_h]-2, "for "+int_to_string(dmg));
+      }
+
+
       renderer0.present();
+
+      cout << "Enter anything to continue: ";
+      cin >> sinput;
+      cinput = ' ';
 
       f = pop_dead(blufor, player_c, f);
     }
@@ -429,7 +526,7 @@ int main(){
     renderer0.clear();
     renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
     renderer0.drawText(2, 2, "Main menu");
-    renderer0.drawText(2, 4, "(T)utorial");
+    //renderer0.drawText(2, 4, "(T)utorial");
     renderer0.drawText(2, 5, "(C)ombat");
     renderer0.drawText(2, 6, "(S)ave");
     renderer0.drawText(2, 7, "(I)nventory");
