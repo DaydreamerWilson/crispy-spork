@@ -1,0 +1,12 @@
+// do not copy any texts after the // symbol
+id 81 // id must be in consecutive
+name Template Character // name can only be written in alphabets and whitespaces
+icon TC // alphbets characters with length of 2
+description A template character to guide you making a new character // description of any length within one line
+class S // all class in rarity order are S, A, B, C, one character only
+hp 300 // health point, integer only
+atk 100 // attack, integer only
+def 100 // defense, integer only
+spd 3 // number of tiles of movement allowed, integer only
+rgn 3 // number of tiles of attack allowed, integer only
+// the character template without instructions is stored in _character-template.txt

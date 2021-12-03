@@ -1,0 +1,10 @@
+id 81
+name Template Character
+icon TC
+description A template character to guide you making a new character
+class S
+hp 300
+atk 100
+def 100
+spd 3
+rgn 3
