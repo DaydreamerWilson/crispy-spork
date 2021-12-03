@@ -568,9 +568,11 @@ void battle(map min){
   renderer0.clear();
   if(e==0){
     // draw victory screen and add new character for player and auto save
+    renderer0.clear();
     renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
     renderer0.drawText(2, 2, "Victory");
     renderer0.drawText(2, 3, "You gained a new character!");
+    renderer0.present();
 
     int a = randInt(0, totalchar);
     playerdata.character_list.push_back(characters[a]);
@@ -579,14 +581,9 @@ void battle(map min){
     cout << "Please enter anything to view the character: ";
     cin >> sinput;
 
-    for(int i = 0; i<playerdata.character_list.size(); i++){
-      renderer0.clear();
-      renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
-      print_character(characters[a]); // print out character data selected by user
-      renderer0.present();
-      cout << "Please enter anything to continue: ";
-      cin >> sinput;
-    }
+    renderer0.clear();
+    renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
+    print_character(characters[a]); // print out character data selected by user
   }
   else{
     // draw defeated screen and auto save
