@@ -9,6 +9,7 @@
   - Player gain new characters by playing the game and winning battles.
   - New characters can be used in battle.
   - Characters will be lost if killed in action during combat.
+  - Easy and accessible modding of the game.
 ### Gamerule ###
   - Follow instructions.
   - Avoid invalid input to prevent unexpected behaviour.
@@ -120,6 +121,7 @@
     - Removing existing map
       - Do not remove default map
       - Otherwise, simply delete the corresponding .txt file
+    - Map that are too large might not be able to fit in the terminal.
   - Player Data:
     - Navigate to crispy-sporky-main/res.
     - Open playerdata.txt.
