@@ -87,7 +87,7 @@ void print_character(character c){
 // choose characters before battle
 void choose_character(int f, int e, character * player_c, character * enemy_c){
   int page = 1, chose = 0;
-  int max_page = (playerdata.character_list.size()/(resolution[sel_resol][const_h]-9))+1;
+  int max_page = ((playerdata.character_list.size()-1)/(resolution[sel_resol][const_h]-10))+1;;
   char cinput='a';
   string sinput=" ";
   while(chose<f){
@@ -586,7 +586,7 @@ int main(){
       // print out character list owned by player
       {
         int page = 1;
-        int max_page = (playerdata.character_list.size()/(resolution[sel_resol][const_h]-9))+1;
+        int max_page = ((playerdata.character_list.size()-1)/(resolution[sel_resol][const_h]-10))+1;
         while(cinput!='M'){
           renderer0.clear();
           renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
