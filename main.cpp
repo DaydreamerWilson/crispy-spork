@@ -516,7 +516,8 @@ void battle(map min){
     renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
     renderer0.drawText(2, 2, "Victory");
     renderer0.drawText(2, 3, "You gained a new character!");
-    playerdata.character_list.push_back(characters[randInt(0, 80)]);
+
+    playerdata.character_list.push_back(characters[randInt(0, totalchar)]);
     playerdata.save("./res/playerdata.txt");
   }
   else{

@@ -11,6 +11,7 @@ using namespace std;
 
 int sel_resol = small;
 character *characters = 0;
+int totalchar = 0;
 
 // loading txt into map file
 map::map(string fin){
@@ -132,14 +133,15 @@ void character::print(){
 
 // loading characters list
 void load_characters(string fin){
-  int no_of_character, id;
+  totalchar;
+  int id;
   string fin_1;
   ifstream list_file, character_file;
   list_file.open(fin+"/character_list.txt");
   if(list_file.fail()){cout << "fatal error loading character list: file failed" << endl;}
-  list_file >> no_of_character;
-  characters = new character[no_of_character];
-  for(int i = 0; i < no_of_character; i++){
+  list_file >> totalchar;
+  characters = new character[totalchar];
+  for(int i = 0; i < totalchar; i++){
     list_file >> id;
     list_file >> fin_1;
     characters[i] = (fin+"/"+fin_1+".txt");

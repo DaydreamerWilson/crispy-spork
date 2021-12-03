@@ -95,5 +95,6 @@ double randDouble(double min, double max);
 extern int sel_resol;
 
 extern character *characters;
+extern int totalchar;
 
 #endif
