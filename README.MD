@@ -34,7 +34,9 @@
     - Allow inspecting of stats.
     - Saving of your precious characters.
       - Autosave is frequent and loading is automatic at the start of the game.
-### Instructions ###
+### Game Instructions ###
+  - Use make main in terminal to compile the game.
+  - Use ./main to run the game.
   - Upon starting the game, enter S to select the smallest resolution.
   - Afterward, type OKAY to confirm the resolution.
   - In main menu, enter I to inspect inventory, or enter C to enter combat.
@@ -80,3 +82,51 @@
       - Enter . to return to main menu afterward.
       - The game will be auto-saved at this point
   - After the battle, enter I to enter the inventory to view the new character.
+### File Instructions ###
+  - You can find instructions to modify the game files here.
+  - Characters:
+    - Navigate to crispy-sporky-main/res/characters.
+    - Adding new character
+      - Create new txt file with with the format, character_name.txt without any space in the name.
+      - Follow template in _character-template-instruction.txt, do not include words after //
+      - Add new line at end in character_list.txt, the line should be as following:
+        81 character_name
+        - An ID followed by the text file name without the prefix .txt.
+      - IDs in character_list.txt must be in consecutive and in numeric order.
+      - Change the number in the first line in character_list.txt to the number of characters in total.
+    - Editing existing character
+      - Open the corresponding .txt file.
+      - Edit with regards to the format stated in _character-template.txt.
+      - Avoid changing the ID, as player data loads character according to ID, changing the ID might result in loading failure.
+    - Replacing existing character
+      - The replacing character's ID must be the same as the one you want to replace.
+      - Delete the character's .txt file.
+      - Replace with the new character's .txt file.
+      - Replace the corresponding line of the old character in character_list.txt with same ID.
+      - All player save that has the existing character will be affected!
+    - Removing existing character
+      - Remove the character's .txt file.
+      - Remove the corresponding line in character_list.txt
+      - Change ALL ID in consecutive after the removed character, as ID in character_list.txt must be in consecutive and in numeric order.
+      - Change the number in the first line in character_list.txt to the number of characters in total.
+  - Map:
+    - Navigate to crispy-sporky-main/res/map.
+    - Adding new map
+      - Create new txt file with the format, map_name.txt without any space in the name.
+      - Follow template in _map-template-instruction.txt, do not include words after //
+    - Editing existing map
+      - Open corresponding .txt file.
+      - Edit with regards to the format stated in _map-template-instruction.txt.
+    - Removing existing map
+      - Do not remove default map
+      - Otherwise, simply delete the corresponding .txt file
+  - Player Data:
+    - Navigate to crispy-sporky-main/res.
+    - Open playerdata.txt.
+    - The text file is in format:
+      dummy_varible character_counts
+      characterid characterid characterid characterid characterid characterid characterid...
+    - Add or remove new character id in any order.
+    - Change character_counts to match the new character's count.
+    - Open the game and save in the main menu.
+    - The text file will be automatically sorted after saving in the game.
