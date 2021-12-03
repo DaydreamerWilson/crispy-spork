@@ -84,7 +84,7 @@
   - After the battle, enter I to enter the inventory to view the new character.
 ### File Instructions ###
   - You can find instructions to modify the game files here.
-  # Characters: #
+  Characters:
     - Navigate to crispy-sporky-main/res/characters.
     - Adding new character
       - Create new txt file with with the format, character_name.txt without any space in the name.
@@ -109,7 +109,7 @@
       - Remove the corresponding line in character_list.txt
       - Change ALL ID in consecutive after the removed character, as ID in character_list.txt must be in consecutive and in numeric order.
       - Change the number in the first line in character_list.txt to the number of characters in total.
-  # Map: #
+  Map:
     - Navigate to crispy-sporky-main/res/map.
     - Adding new map
       - Create new txt file with the format, map_name.txt without any space in the name.
@@ -120,7 +120,7 @@
     - Removing existing map
       - Do not remove default map
       - Otherwise, simply delete the corresponding .txt file
-  # Player Data: #
+  Player Data:
     - Navigate to crispy-sporky-main/res.
     - Open playerdata.txt.
     - The text file is in format:
