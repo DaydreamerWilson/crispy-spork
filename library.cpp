@@ -85,7 +85,7 @@ void field::add_mark(int x, int y, int range, int i){
       if(x>0){add_mark(x-1, y, range, i);}
       if(y>0){add_mark(x, y-1, range, i);}
       if(x<width-1){add_mark(x+1, y, range, i);}
-      if(y<width-1){add_mark(x, y+1, range, i);}
+      if(y<height-1){add_mark(x, y+1, range, i);}
     }
   }
 }

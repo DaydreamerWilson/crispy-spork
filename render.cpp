@@ -152,10 +152,10 @@ bool renderer::drawField(int x, int y, field tar_fin){
   x++;
   y++;
   for(int i = 0; i < tar_fin.height; i++){
-    drawText((i+1)*3+x, y, int_to_string(i));
+    drawText(x, i+y+1, int_to_string(i));
   }
   for(int j = 0; j < tar_fin.width; j++){
-    drawText(x, j+y+1, int_to_string(j));
+    drawText((j+1)*3+x, y, int_to_string(j));
   }
   for(int i = 0; i < tar_fin.height; i++){
       for(int j = 0; j < tar_fin.width; j++){
