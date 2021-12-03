@@ -100,6 +100,8 @@ character::character(string fin){
   file.open(fin);
   if(file.fail()){cout << "fatal error loading character: file failed" <<endl;}
 
+  flag = false;
+
   string temp;
   file >> temp >> id;
   file >> temp;
@@ -153,6 +155,8 @@ void load_characters(string fin){
 
 // loading playerdata
 void player::load(string fin){
+  character_list.clear();
+
   ifstream file;
   if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error loading playerdata: syntax error" << endl;}
   file.open(fin);
@@ -166,17 +170,39 @@ void player::load(string fin){
   }
 }
 
-// saving playerdata
+// saving playerdata and reloading playerdata
 void player::save(string fin){
+  int * temp;
+  int itemp;
   ofstream file;
   if(fin.rfind(".txt")!=fin.length()-4){cout << "fatal error saving player data: syntax error" << endl;}
   file.open(fin);
   if(file.fail()){cout << "fatal error saving character: file failed" <<endl;}
 
+  temp = new int [character_list.size()];
+
+  for(int i = 0; i < character_list.size(); i++){
+    temp[i]=character_list[i].id;
+  }
+
+  for(int i = 0; i < character_list.size(); i++){
+    for(int j = 0; j < character_list.size()-1; j++){
+      if(temp[j]>temp[j+1]){
+        itemp = temp[j];
+        temp[j] = temp[j+1];
+        temp[j+1] = itemp;
+      }
+    }
+  }
+
   file << ruby << ' ' << character_list.size() << endl;
   for(int i = 0; i < character_list.size(); i++){
-    file << character_list[i].id << ' ';
+    file << temp[i] << ' ';
   }
+
+  file.close();
+
+  load(fin);
 }
 
 // dummy constructor for declaration of null pointer

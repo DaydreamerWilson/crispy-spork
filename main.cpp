@@ -1,6 +1,7 @@
 #include <iostream>
-#include <cmath>
 #include <sstream>
+#include <fstream>
+#include <cmath>
 #include "library.h"
 #include "render.h"
 
@@ -123,10 +124,27 @@ void choose_character(int f, int e, character * player_c, character * enemy_c){
       int temp;
       istringstream iss (sinput);
       iss >> temp;
+      bool flag2 = true;
       for(int i = 0; i<playerdata.character_list.size(); i++){
         if(playerdata.character_list[i].id==temp){
-          player_c[chose] = playerdata.character_list[i];
-          chose++;
+          for(int j = 0; j < chose; j++){
+            if(player_c[j].id == temp){
+              flag2 = false;
+              break;
+            }
+          }
+          if(flag2){
+            player_c[chose] = playerdata.character_list[i];
+            playerdata.character_list[i].flag = true;
+            chose++;
+            break;
+          }
+          else{
+            cout << "You can't select the same character twice!" << endl;
+            cout << "Enter anything to continue: ";
+            cin >> sinput;
+            break;
+          }
         }
       }
     }
@@ -172,15 +190,33 @@ void draw_battle(field field_now, piece * blufor, piece * redfor, character * pl
 }
 
 // check if chess piece on board is eliminated
-int pop_dead(piece * nfor, character * x, int size){
+int pop_dead(piece * nfor, character * x, int size, int p){
   int counter=0;
   character ctemp;
   piece ptemp;
 
-  if(size==1 && x[0].hp<=0){return 0;}
+  if(size==1 && x[0].hp<=0){
+    if(p){
+      for(int j = 0; j < playerdata.character_list.size(); j++){
+        if(playerdata.character_list[j].id==x[0].id){
+          playerdata.character_list.erase(playerdata.character_list.begin()+j);
+          break;
+        }
+      }
+    }
+    return 0;
+  }
 
   for(int i = 0; i < size-counter; i++){
     if(x[i].hp<=0){
+      if(p){
+        for(int j = 0; j < playerdata.character_list.size(); j++){
+          if(playerdata.character_list[j].id==x[i].id){
+            playerdata.character_list.erase(playerdata.character_list.begin()+j);
+            break;
+          }
+        }
+      }
       counter++;
       ctemp = x[size-counter];
       x[size-counter] = x[i];
@@ -191,7 +227,19 @@ int pop_dead(piece * nfor, character * x, int size){
     }
   }
 
-  if(size==counter){return 0;}
+  if(size==counter){
+    if(p){
+      for(int i = 0; i < size-counter; i++){
+        for(int j = 0; j < playerdata.character_list.size(); j++){
+          if(playerdata.character_list[j].id==x[i].id){
+            playerdata.character_list.erase(playerdata.character_list.begin()+j);
+            break;
+          }
+        }
+      }
+    }
+    return 0;
+  }
   else{
     return size-counter;
   }
@@ -207,7 +255,9 @@ void battle(map min){
   character * enemy_c = 0;
   piece * blufor;
   piece * redfor;
+
   field field_now (min);
+
   int f = 0, e = 0;
   for(int i = 0; i < field_now.height; i++){
     for(int j = 0; j < field_now.width; j++){
@@ -399,7 +449,7 @@ void battle(map min){
       }
 
       // check if game ended and if any enemy died turning this turn
-      e = pop_dead(redfor, enemy_c, e);
+      e = pop_dead(redfor, enemy_c, e, 0);
       if(e == 0){break;}
     }
 
@@ -461,6 +511,11 @@ void battle(map min){
                   not_occupied = false;
                 }
               }
+              for(int j = 0; j < f; j++){
+                if(blufor[j].x == redfor[i].x+dx && blufor[j].y == redfor[i].y+dy){
+                  not_occupied = false;
+                }
+              }
               if(not_occupied){
                 redfor[i].x += dx;
                 redfor[i].y += dy;
@@ -505,7 +560,7 @@ void battle(map min){
       cinput = ' ';
 
       // check if game ended and if any user controlled character died during this turn
-      f = pop_dead(blufor, player_c, f);
+      f = pop_dead(blufor, player_c, f, 1);
       if(f == 0){break;}
     }
   }
@@ -517,8 +572,21 @@ void battle(map min){
     renderer0.drawText(2, 2, "Victory");
     renderer0.drawText(2, 3, "You gained a new character!");
 
-    playerdata.character_list.push_back(characters[randInt(0, totalchar)]);
+    int a = randInt(0, totalchar);
+    playerdata.character_list.push_back(characters[a]);
     playerdata.save("./res/playerdata.txt");
+
+    cout << "Please enter anything to view the character: ";
+    cin >> sinput;
+
+    for(int i = 0; i<playerdata.character_list.size(); i++){
+      renderer0.clear();
+      renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
+      print_character(characters[a]); // print out character data selected by user
+      renderer0.present();
+      cout << "Please enter anything to continue: ";
+      cin >> sinput;
+    }
   }
   else{
     // draw defeated screen and auto save
@@ -570,7 +638,32 @@ int main(){
     switch(cinput){
     case 'C':
       // initiate battle with map class
-      battle(map("./res/map/8_8_symmetric.txt"));
+      cout << "Default test map: ./res/map/8_8_symmetric.txt" << endl;
+      cout << "Please enter map link, or (D) to use default map: ";
+      cin >> sinput;
+      if(sinput[0]=='D'){
+        battle(map("./res/map/8_8_symmetric.txt"));
+      }
+      else{
+        if(sinput.rfind(".txt")!=sinput.length()-4){
+          cout << "fatal error loading map: syntax error" << endl;
+          cout << "Enter anything to continue: ";
+          cin >> sinput;
+          break;
+        }
+
+        ifstream file;
+        file.open(sinput);
+        if(file.fail()){
+          cout << "fatal error loading map: file failed" << endl;
+          cout << "Enter anything to continue: ";
+          cin >> sinput;
+          break;
+        }
+        file.close();
+
+        battle(map(sinput));
+      }
       sinput = " ";
       break;
     case 'S':
@@ -625,10 +718,11 @@ int main(){
               if(playerdata.character_list[i].id==temp){
                 renderer0.clear();
                 renderer0.drawRectangle(0, 0, resolution[sel_resol][const_h], resolution[sel_resol][const_w], '*');
-                print_character(characters[temp-1]); // print out character data selected by user
+                print_character(characters[playerdata.character_list[i].id-1]); // print out character data selected by user
                 renderer0.present();
                 cout << "Please enter anything to continue: ";
                 cin >> sinput;
+                break;
               }
             }
             sinput="!QUIT";

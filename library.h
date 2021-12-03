@@ -44,6 +44,7 @@ public:
 class character
 {
 public:
+  bool flag;
   int id, hp, atk, def, spd, rgn;
   char tier;
   string icon, name, info;
